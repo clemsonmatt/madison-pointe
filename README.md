@@ -1,1 +1,1 @@
-# madison-pointe
+# Madison Pointe Homeowners Association
