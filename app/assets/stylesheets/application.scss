@@ -1,0 +1,77 @@
+@import "bootstrap";
+
+body {
+    background-color: #EDF2F4;
+}
+
+.text-md-blue {
+    color: #8D99AE;
+}
+.text-dark-blue {
+    color: #2B2D42;
+}
+.text-light-red {
+    color: #EF233C;
+}
+
+.header {
+    background-color: #FFFFFF;
+    height: 120px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+
+    h2 {
+        font-size: 2.1em;
+    }
+    h4 {
+        font-size: 1.5em;
+    }
+    h1, h2, h3, h4, h5 {
+        color: #8D99AE;
+    }
+
+    .profile {
+        img {
+            margin-top: 5px;
+            border: 5px solid #FFF;
+            border-radius: 50%;
+            max-width: 65px;
+            max-height: 65px;
+        }
+        a {
+            margin-top: 15px;
+            border: 1px solid #DDE2E4;
+            border-radius: 50px;
+            background-color: #EF233C;
+
+            font-size: 1.4em;
+            padding: 5px 30px 5px 40px;
+            margin-left: -30px;
+            float: right;
+            color: #FFF;
+        }
+    }
+
+    .navbar {
+        margin-top: 75px;
+        padding-right: 0px;
+
+        li > a {
+            color: #8D99AE;
+        }
+    }
+}
+
+
+// colors1
+// dark-blue: #2B2D42
+// med-blue: #8D99AE
+// light: #EDF2F4
+// light-red: #EF233C
+// dark-red: #D90429
+
+// colors2
+// red: #E63946
+// light: #F1FAEE
+// light-blue: #A8DADC
+// med-blue: #457B9D
+// dark-blud: #1D3557
