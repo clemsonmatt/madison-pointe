@@ -1,7 +1,8 @@
 @import "bootstrap";
 
 body {
-    background-color: #EDF2F4;
+    background-color: #F6F7F8;
+    font-weight: 100;
 }
 
 .text-md-blue {
@@ -21,9 +22,12 @@ body {
 
     h2 {
         font-size: 2.1em;
+        font-weight: 100;
+        letter-spacing: 2px;
     }
     h4 {
         font-size: 1.5em;
+        font-weight: 100;
     }
     h1, h2, h3, h4, h5 {
         color: #8D99AE;
@@ -57,8 +61,14 @@ body {
 
         li > a {
             color: #8D99AE;
+            font-weight: 100;
         }
     }
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 100;
+    letter-spacing: 1px;
 }
 
 
