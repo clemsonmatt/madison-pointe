@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "material_icons";
 
 body {
     background-color: #F6F7F8;
@@ -6,65 +7,34 @@ body {
 }
 
 .text-md-blue {
-    color: #8D99AE;
+    color: #8B96A4;
 }
 .text-dark-blue {
-    color: #2B2D42;
+    color: #2C3E50;
 }
 .text-light-red {
     color: #EF233C;
 }
 
-.header {
-    background-color: #FFFFFF;
-    height: 120px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-
-    h2 {
-        font-size: 2.1em;
-        font-weight: 100;
-        letter-spacing: 2px;
+.navbar {
+    .navbar-brand {
+        letter-spacing: 1px;
     }
-    h4 {
-        font-size: 1.5em;
-        font-weight: 100;
+    .nav-item > .nav-link {
+        margin-left: 5px;
     }
-    h1, h2, h3, h4, h5 {
-        color: #8D99AE;
-    }
+}
 
-    .profile {
-        img {
-            margin-top: 5px;
-            border: 5px solid #FFF;
-            border-radius: 50%;
-            max-width: 65px;
-            max-height: 65px;
-            background-color: #8D99AE;
-        }
-        a {
-            margin-top: 18px;
-            border: 1px solid #DDE2E4;
-            border-radius: 50px;
-            background-color: #EF233C;
-
-            font-size: 1.4em;
-            padding: 2px 30px 2px 40px;
-            margin-left: -30px;
-            float: right;
-            color: #FFF;
-        }
-    }
-
-    .navbar {
-        margin-top: 75px;
-        padding-right: 0px;
-
-        li > a {
-            color: #8D99AE;
-            font-weight: 100;
-        }
-    }
+.page-title {
+    background-color: #007bff;
+    color: #e4f2f6;
+    height: 85px;
+    width: 100%;
+    font-size: 2.2em;
+    font-weight: 200;
+    line-height: 2.8;
+    letter-spacing: 1px;
+    text-transform: capitalize;
 }
 
 h1, h2, h3, h4, h5 {
@@ -72,17 +42,6 @@ h1, h2, h3, h4, h5 {
     letter-spacing: 1px;
 }
 
-
-// colors1
-// dark-blue: #2B2D42
-// med-blue: #8D99AE
-// light: #EDF2F4
-// light-red: #EF233C
-// dark-red: #D90429
-
-// colors2
-// red: #E63946
-// light: #F1FAEE
-// light-blue: #A8DADC
-// med-blue: #457B9D
-// dark-blud: #1D3557
+.table th {
+    border-top: none;
+}
