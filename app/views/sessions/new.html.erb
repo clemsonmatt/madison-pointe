@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-sm-3"></div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="panel panel-default" style="margin-top: 75px;">
+                <%= form_tag sessions_path do %>
+                    <div class="text-center text-primary">
+                        <h2 style="padding-top: 25px; text-transform: uppercase; letter-spacing: 2px;">
+                            <span style="position: relative; top: 5px;">Madison Pointe
+                        </h2>
+                        <h5>homeowners association</h5>
+                    </div>
+                    <div class="panel-body" style="margin-top: 30px;">
+                        <div class="input-group" style="margin-bottom: 10px;">
+                            <span class="input-group-addon bg-light text-primary">
+                                <%= material_icon.mail_outline %>
+                            </span>
+                            <%= text_field_tag :email, params[:email], class: 'form-control', id: 'js-email', placeholder: 'Email...' %>
+                        </div>
+
+                        <div class="input-group" style="margin-bottom: 30px;">
+                            <span class="input-group-addon bg-light text-primary">
+                                <%= material_icon.lock_outline %>
+                            </span>
+                            <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Password...' %>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">
+                            Login
+                        </button>
+                        <br>
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <br />
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
