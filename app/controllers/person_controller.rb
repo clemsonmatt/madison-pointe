@@ -1,4 +1,6 @@
 class PersonController < ApplicationController
+    before_action :logged_in?
+    
     def index
         @people = Person.all.order(last_name: :asc)
     end
