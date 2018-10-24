@@ -1,10 +1,6 @@
-<% content_for :page_title do %>
-    <%= render "shared/page_title", title: 'People' %>
-<% end %>
-
 <% content_for :breadcrumb do %>
     <% profile_link = link_to 'Profile', profile_index_path %>
-    <% if @user != @person %>
+    <% if @user == @person %>
         <%= render "shared/breadcrumb", items: [profile_link, 'Edit'] %>
     <% else %>
         <% residents_link = link_to 'Residents', profile_index_path %>
@@ -12,29 +8,46 @@
     <% end %>
 <% end %>
 
-<%= bootstrap_form_for @person, url: {action: 'update'} do |f| %>
-    <% if @person.errors.any? %>
-        <div id="error_explanation">
-            <h4 class="text-danger">
-                <%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:
-            </h4>
-            <ul>
-                <% @person.errors.full_messages.each do |msg| %>
-                    <li class="text-danger"><%= msg %></li>
+<% content_for :profile_content do %>
+    <div class="panel">
+        <div class="panel-header">
+            <div class="float-right">
+                <%= link_to profile_index_path, class: 'btn btn-outline-custom btn-sm' do %>
+                    <%= material_icon.arrow_back %>
+                    Back
                 <% end %>
-            </ul>
+            </div>
+            Contact Info
         </div>
-    <% end %>
+        <div class="panel-body">
+            <%= bootstrap_form_for @person, url: {action: 'update'} do |f| %>
+                <% if @person.errors.any? %>
+                    <div id="error_explanation">
+                        <h4 class="text-danger">
+                            <%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:
+                        </h4>
+                        <ul>
+                            <% @person.errors.full_messages.each do |msg| %>
+                                <li class="text-danger"><%= msg %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
 
-    <div class="row">
-        <div class="col-md-6">
-            <%= f.text_field :first_name, class: "form-control" %>
-            <%= f.text_field :last_name, class: "form-control" %>
-        </div>
-        <div class="col-md-6">
-            <%= f.text_field :email, class: "form-control" %>
-            <%= f.text_field :phone, class: "form-control" %>
+                <div class="row">
+                    <div class="col-md-6">
+                        <%= f.text_field :first_name, class: "form-control" %>
+                        <%= f.text_field :last_name, class: "form-control" %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= f.text_field :email, class: "form-control" %>
+                        <%= f.text_field :phone, class: "form-control" %>
+                    </div>
+                </div>
+                <%= f.submit class: "btn btn-custom" %>
+            <% end %>
         </div>
     </div>
-    <%= f.submit class: "btn btn-custom" %>
 <% end %>
+
+<%= render 'profile/layout' %>
