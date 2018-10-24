@@ -10,16 +10,53 @@
 <div class="row">
     <div class="col-sm-4">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
-            <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#profile" role="tab">Profile</a>
-            <a class="nav-link" id="v-pills-notifications-tab" data-toggle="pill" href="#notifications" role="tab">Notifications</a>
-            <a class="nav-link" id="v-pills-dues-tab" data-toggle="pill" href="#dues" role="tab">Dues</a>
-            <a class="nav-link" id="v-pills-public-tab" data-toggle="pill" href="#public" role="tab">Public Card</a>
-            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#settings" role="tab">Settings</a>
+            <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#profile" role="tab">
+                <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.account_circle.style('font-size: 18px;') %></div>
+                Profile
+            </a>
+            <a class="nav-link" id="v-pills-residence-tab" data-toggle="pill" href="#residence" role="tab">
+                <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.home.style('font-size: 18px;') %></div>
+                Residence
+            </a>
+            <a class="nav-link" id="v-pills-notifications-tab" data-toggle="pill" href="#notifications" role="tab">
+                <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.notifications.style('font-size: 18px;') %></div>
+                Notifications
+            </a>
+            <a class="nav-link" id="v-pills-dues-tab" data-toggle="pill" href="#dues" role="tab">
+                <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.attach_money.style('font-size: 18px;') %></div>
+                Dues
+            </a>
         </div>
     </div>
     <div class="col-sm-8">
         <div class="tab-content">
-            <div class="tab-pane active" id="profile" role="tabpanel">Profile</div>
+            <div class="tab-pane active" id="profile" role="tabpanel">
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="float-right">
+                            <%= link_to edit_person_path(@person), class: 'btn btn-outline-custom btn-sm' do %>
+                                <%= material_icon.create.style('font-size: 16px;') %>
+                            <% end %>
+                        </div>
+                        Contact Info
+                    </div>
+                    <div class="panel-body">
+                        <dl class="row">
+                            <dt class="col-sm-1"><span class="text-center"><%= material_icon.account_circle %></span></dt>
+                            <dd class="col-sm-11"><%= @person %></dd>
+                        </dl>
+                        <dl class="row">
+                            <dt class="col-sm-1"><span class="text-center"><%= material_icon.mail %></span></dt>
+                            <dd class="col-sm-11"><%= @person.email %></dd>
+                        </dl>
+                        <dl class="row" style="margin-bottom: 0px;">
+                            <dt class="col-sm-1"><span class="text-center"><%= material_icon.phone %></span></dt>
+                            <dd class="col-sm-11"><%= @person.phone ? @person.phone : material_icon.block %></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="residence" role="tabpanel">Residence</div>
             <div class="tab-pane" id="notifications" role="tabpanel">Notifications</div>
             <div class="tab-pane" id="dues" role="tabpanel">Dues</div>
             <div class="tab-pane" id="public" role="tabpanel">Public Card</div>

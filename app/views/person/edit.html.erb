@@ -1,2 +1,36 @@
-<h1>Person#edit</h1>
-<p>Find me in app/views/person/edit.html.erb</p>
+<% content_for :page_title do %>
+    <%= render "shared/page_title", title: 'People' %>
+<% end %>
+
+<% content_for :breadcrumb do %>
+    <% people_link = link_to 'All People', person_index_path %>
+    <% person_link = link_to @person, person_path(@person) %>
+    <%= render "shared/breadcrumb", items: [people_link, person_link, 'Edit Profile'] %>
+<% end %>
+
+<%= bootstrap_form_for @person, url: {action: 'update'} do |f| %>
+    <% if @person.errors.any? %>
+        <div id="error_explanation">
+            <h4 class="text-danger">
+                <%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:
+            </h4>
+            <ul>
+                <% @person.errors.full_messages.each do |msg| %>
+                    <li class="text-danger"><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+        <div class="col-md-6">
+            <%= f.text_field :first_name, class: "form-control" %>
+            <%= f.text_field :last_name, class: "form-control" %>
+        </div>
+        <div class="col-md-6">
+            <%= f.text_field :email, class: "form-control" %>
+            <%= f.text_field :phone, class: "form-control" %>
+        </div>
+    </div>
+    <%= f.submit class: "btn btn-primary" %>
+<% end %>

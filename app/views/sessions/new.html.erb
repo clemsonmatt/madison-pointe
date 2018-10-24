@@ -1,39 +1,51 @@
-<div class="container">
-    <div class="row">
-        <div class="col-lg-4 col-sm-3"></div>
-        <div class="col-lg-4 col-sm-6">
-            <div class="panel panel-default" style="margin-top: 75px;">
-                <%= form_tag sessions_path do %>
-                    <div class="text-center text-primary">
-                        <h2 style="padding-top: 25px; text-transform: uppercase; letter-spacing: 2px;">
-                            <span style="position: relative; top: 5px;">Madison Pointe
-                        </h2>
-                        <h5>homeowners association</h5>
-                    </div>
-                    <div class="panel-body" style="margin-top: 30px;">
-                        <div class="input-group" style="margin-bottom: 10px;">
-                            <span class="input-group-addon bg-light text-primary">
-                                <%= material_icon.mail_outline %>
-                            </span>
-                            <%= text_field_tag :email, params[:email], class: 'form-control', id: 'js-email', placeholder: 'Email...' %>
+<div class="page-image">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-xs-3"></div>
+            <div class="col-lg-4 col-xs-6">
+                <div style="margin-top: 75px;">
+                    <% flash.each do |key, value| %>
+                        <div class="alert alert-<%= key %>">
+                            <button type="button" class="close" data-dismiss="alert" style="font-size: 1.8em;">&times;</button>
+                            <%= value %>
                         </div>
+                    <% end %>
 
-                        <div class="input-group" style="margin-bottom: 30px;">
-                            <span class="input-group-addon bg-light text-primary">
-                                <%= material_icon.lock_outline %>
-                            </span>
-                            <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Password...' %>
+                    <%= form_tag sessions_path do %>
+                        <div class="text-center text-white">
+                            <h2 style="padding-top: 25px; text-transform: uppercase; letter-spacing: 2px; font-weight: 500;">
+                                <span style="position: relative; top: 5px;">Madison Pointe</span>
+                            </h2>
+                            <h5 style="font-weight: 400;">homeowners association</h5>
                         </div>
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">
-                            Login
-                        </button>
                         <br>
-                        <a href="#">Forgot password?</a>
-                    </div>
-                    <br />
-                <% end %>
+                        <div class="panel">
+                            <div class="panel-body">
+                                <h2 class="text-center text-mp">Login</h2>
+                                <div style="margin-top: 30px;">
+                                    <div class="input-group" style="margin-bottom: 10px;">
+                                        <span class="input-group-addon bg-light text-mp">
+                                            <%= material_icon.mail_outline %>
+                                        </span>
+                                        <%= text_field_tag :email, params[:email], class: 'form-control', id: 'js-email', placeholder: 'Email...' %>
+                                    </div>
+
+                                    <div class="input-group" style="margin-bottom: 30px;">
+                                        <span class="input-group-addon bg-light text-mp">
+                                            <%= material_icon.lock_outline %>
+                                        </span>
+                                        <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Password...' %>
+                                    </div>
+                                </div>
+                                <button class="btn btn-custom btn-lg btn-block" type="submit">
+                                    Login
+                                </button>
+                                <hr>
+                                <a href="#">Forgot password?</a>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>

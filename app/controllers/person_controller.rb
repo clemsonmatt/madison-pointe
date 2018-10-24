@@ -1,6 +1,6 @@
 class PersonController < ApplicationController
     before_action :logged_in?
-    
+
     def index
         @people = Person.all.order(last_name: :asc)
     end
@@ -18,16 +18,25 @@ class PersonController < ApplicationController
 
         if @person.save
             flash[:success] = 'Person added'
-            redirect_to person_index_path(@person)
+            redirect_to person_path(@person)
         else
             render 'new'
         end
     end
 
     def edit
+        @person = Person.find(params[:id])
     end
 
     def update
+        @person = Person.find(params[:id])
+
+        if @person.update(person_params)
+            flash[:success] = 'Person saved'
+            redirect_to person_path(@person)
+        else
+            render 'edit'
+        end
     end
 
     def destroy
@@ -35,6 +44,6 @@ class PersonController < ApplicationController
 
     private
         def person_params
-            params.require(:person).permit(:first_name, :last_name, :email, :password, :password_confirmation, :permissions => [])
+            params.require(:person).permit(:first_name, :last_name, :email, :phone, :password, :password_confirmation, :permissions => [])
         end
 end
