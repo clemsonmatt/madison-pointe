@@ -1,7 +1,11 @@
 @import "bootstrap";
 @import "material_icons";
 
-$mpColor: #0A7;
+// $mpColor: #0A7;
+// $mpColor: #2c3e50;
+$mpColor: #2980b9;
+// $mpColor: #2f3640;
+$mpColorDark: #0C1E30;
 
 html, body {
     background-color: #F6F7F8;
@@ -24,20 +28,20 @@ html, body {
 
 .navbar {
     .navbar-brand {
-        letter-spacing: 2px;
         color: rgba(255, 255, 255, 1);
-        text-transform: capitalize;
-        background: $mpColor;
-        padding: 25px 15px 15px 15px;
-        margin-top: -10px;
-        border-bottom-right-radius: 5px;
-        border-bottom-left-radius: 5px;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 1.2em;
     }
     .nav-item > .nav-link {
-        margin-left: 15px;
+        margin-left: 25px;
         color: rgba(255, 255, 255, 1);
     }
-    font-size: 1.4em;
+    .btn {
+        background: rgba(0,0,0,0.5);
+        border: 1px solid #fff;
+    }
+    font-size: 1.2em;
 }
 
 .page-title {
@@ -49,18 +53,17 @@ html, body {
     line-height: 2.8;
     letter-spacing: 1px;
     text-transform: capitalize;
-    padding-top: 50px;
+    padding-top: 175px;
 }
 
 .header-body {
-    background: url(asset_path('trees.jpg'));
-    background-position: center bottom;
+    background: url(asset_path('madison-pointe.jpg'));
+    background-position: center 40%;
     background-size: 100% auto;
-    padding-bottom: 100px;
 }
 
 .page-image {
-    background-image: url(asset_path('trees.jpg'));
+    background-image: url(asset_path('madison-pointe.jpg'));
 
     height: 100%;
 
@@ -93,14 +96,14 @@ h1, h2, h3, h4, h5 {
 }
 .btn-outline-custom {
     background-color: inherit;
-    color: $mpColor;
+    color: $mpColor !important;
     border: 1px solid $mpColor;
 }
 
 a {
     color: $mpColor;
     &:hover {
-        color: #085;
+        color: $mpColorDark;
         text-decoration: underline;
     }
 }
