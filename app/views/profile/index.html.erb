@@ -1,10 +1,9 @@
 <% content_for :page_title do %>
-    <%= render "shared/page_title", title: 'People' %>
+    <%= render "shared/page_title", title: 'My profile' %>
 <% end %>
 
 <% content_for :breadcrumb do %>
-    <% link = link_to 'All People', person_index_path %>
-    <%= render "shared/breadcrumb", items: [link, @person] %>
+    <%= render "shared/breadcrumb", items: ['Profile'] %>
 <% end %>
 
 <div class="row">
@@ -14,9 +13,9 @@
                 <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.account_circle.style('font-size: 18px;') %></div>
                 Profile
             </a>
-            <a class="nav-link" id="v-pills-residence-tab" data-toggle="pill" href="#residence" role="tab">
+            <a class="nav-link" id="v-pills-residents-tab" data-toggle="pill" href="#residents" role="tab">
                 <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.home.style('font-size: 18px;') %></div>
-                Residence
+                Residents
             </a>
             <a class="nav-link" id="v-pills-notifications-tab" data-toggle="pill" href="#notifications" role="tab">
                 <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.notifications.style('font-size: 18px;') %></div>
@@ -34,7 +33,7 @@
                 <div class="panel">
                     <div class="panel-header">
                         <div class="float-right">
-                            <%= link_to edit_person_path(@person), class: 'btn btn-outline-custom btn-sm' do %>
+                            <%= link_to edit_profile_path(@user), class: 'btn btn-outline-custom btn-sm' do %>
                                 <%= material_icon.create.style('font-size: 16px;') %>
                             <% end %>
                         </div>
@@ -43,20 +42,20 @@
                     <div class="panel-body">
                         <dl class="row">
                             <dt class="col-sm-1"><span class="text-center"><%= material_icon.account_circle %></span></dt>
-                            <dd class="col-sm-11"><%= @person %></dd>
+                            <dd class="col-sm-11"><%= @user %></dd>
                         </dl>
                         <dl class="row">
                             <dt class="col-sm-1"><span class="text-center"><%= material_icon.mail %></span></dt>
-                            <dd class="col-sm-11"><%= @person.email %></dd>
+                            <dd class="col-sm-11"><%= @user.email %></dd>
                         </dl>
                         <dl class="row" style="margin-bottom: 0px;">
                             <dt class="col-sm-1"><span class="text-center"><%= material_icon.phone %></span></dt>
-                            <dd class="col-sm-11"><%= @person.phone ? @person.phone : material_icon.block %></dd>
+                            <dd class="col-sm-11"><%= @user.phone ? @user.phone : material_icon.block %></dd>
                         </dl>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane" id="residence" role="tabpanel">Residence</div>
+            <div class="tab-pane" id="residents" role="tabpanel">Residents</div>
             <div class="tab-pane" id="notifications" role="tabpanel">Notifications</div>
             <div class="tab-pane" id="dues" role="tabpanel">Dues</div>
             <div class="tab-pane" id="public" role="tabpanel">Public Card</div>

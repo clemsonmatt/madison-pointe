@@ -3,9 +3,13 @@
 <% end %>
 
 <% content_for :breadcrumb do %>
-    <% people_link = link_to 'All People', person_index_path %>
-    <% person_link = link_to @person, person_path(@person) %>
-    <%= render "shared/breadcrumb", items: [people_link, person_link, 'Edit Profile'] %>
+    <% profile_link = link_to 'Profile', profile_index_path %>
+    <% if @user != @person %>
+        <%= render "shared/breadcrumb", items: [profile_link, 'Edit'] %>
+    <% else %>
+        <% residents_link = link_to 'Residents', profile_index_path %>
+        <%= render "shared/breadcrumb", items: [profile_link, residents_link, @person, 'Edit'] %>
+    <% end %>
 <% end %>
 
 <%= bootstrap_form_for @person, url: {action: 'update'} do |f| %>

@@ -1,12 +1,7 @@
-class PersonController < ApplicationController
+class ProfileController < ApplicationController
     before_action :logged_in?
 
     def index
-        @people = Person.all.order(last_name: :asc)
-    end
-
-    def show
-        @person = Person.find(params[:id])
     end
 
     def new
@@ -15,6 +10,8 @@ class PersonController < ApplicationController
 
     def create
         @person = Person.new(person_params)
+        @person.street_number = @user.street_number
+        @person.manually_added = true
 
         if @person.save
             flash[:success] = 'Person added'
@@ -33,7 +30,12 @@ class PersonController < ApplicationController
 
         if @person.update(person_params)
             flash[:success] = 'Person saved'
-            redirect_to person_path(@person)
+
+            if @user == @person
+                redirect_to profile_index_path
+            else
+                redirect_to profile_index_path
+            end
         else
             render 'edit'
         end
@@ -44,6 +46,6 @@ class PersonController < ApplicationController
 
     private
         def person_params
-            params.require(:person).permit(:first_name, :last_name, :email, :phone, :password, :password_confirmation, :permissions => [])
+            params.require(:person).permit(:first_name, :last_name, :email, :phone)
         end
 end
