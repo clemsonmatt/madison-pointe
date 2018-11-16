@@ -41,7 +41,8 @@ class ProfileController < ApplicationController
         end
     end
 
-    def destroy
+    def residents
+        @people = Person.where(street_number: @user.street_number)
     end
 
     private

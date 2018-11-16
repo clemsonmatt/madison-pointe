@@ -8,4 +8,5 @@ class Person < ApplicationRecord
 
     validates :last_name, presence: true
     validates :email, presence: true
+    validates :street_address, presence: true
 end

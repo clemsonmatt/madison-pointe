@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     get 'login', to: 'sessions#new', as: 'login'
     get 'logout', to: 'sessions#destroy', as: 'logout'
 
+    # profile
+    get 'profile-residents', to: 'profile#residents', as: 'profile_residents'
+
     get 'dashboard/index'
     root 'dashboard#index'
 

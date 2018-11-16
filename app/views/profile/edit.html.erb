@@ -1,7 +1,7 @@
 <% content_for :breadcrumb do %>
-    <% profile_link = link_to 'Profile', profile_index_path %>
+    <% profile_link = link_to 'Contact Info', profile_index_path %>
     <% if @user == @person %>
-        <%= render "shared/breadcrumb", items: [profile_link, 'Edit'] %>
+        <%= render "shared/breadcrumb", items: ['Profile', profile_link, 'Edit'] %>
     <% else %>
         <% residents_link = link_to 'Residents', profile_index_path %>
         <%= render "shared/breadcrumb", items: [profile_link, residents_link, @person, 'Edit'] %>

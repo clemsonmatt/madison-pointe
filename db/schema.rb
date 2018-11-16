@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011155928) do
+ActiveRecord::Schema.define(version: 20181031200031) do
 
   create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20171011155928) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "street_number"
     t.index ["email"], name: "index_people_on_email"
   end
 
