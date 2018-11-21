@@ -4,9 +4,9 @@ class Person < ApplicationRecord
         "#{self.first_name} #{self.last_name}"
     end
 
-    has_secure_password
+    has_secure_password validations: false
 
+    validates :first_name, presence: true
     validates :last_name, presence: true
-    validates :email, presence: true
-    validates :street_address, presence: true
+    validates :street_number, presence: true
 end

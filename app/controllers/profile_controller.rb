@@ -11,11 +11,11 @@ class ProfileController < ApplicationController
     def create
         @person = Person.new(person_params)
         @person.street_number = @user.street_number
-        @person.manually_added = true
+        # @person.manually_added = true
 
         if @person.save
             flash[:success] = 'Person added'
-            redirect_to person_path(@person)
+            redirect_to profile_residents_path
         else
             render 'new'
         end
@@ -31,11 +31,7 @@ class ProfileController < ApplicationController
         if @person.update(person_params)
             flash[:success] = 'Person saved'
 
-            if @user == @person
-                redirect_to profile_index_path
-            else
-                redirect_to profile_index_path
-            end
+            redirect_to profile_index_path
         else
             render 'edit'
         end
