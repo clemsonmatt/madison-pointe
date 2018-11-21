@@ -26,7 +26,15 @@
                         <td><%= person %></td>
                         <td><%= person.phone != '' ? person.phone : '-' %></td>
                         <td><%= person.email != '' ? person.email : '-' %></td>
-                        <td></td>
+                        <td>
+                            <% if person.password_digest === nil %>
+                                <%= link_to profile_resident_delete_path(person.id), method: :delete do %>
+                                    <span class="text-danger float-right">
+                                        <%= material_icon.delete_forever.style('font-size: 24px;') %>
+                                    </span>
+                                <% end %>
+                            <% end %>
+                        </td>
                     </tr>
                 <% end %>
             </tbody>
