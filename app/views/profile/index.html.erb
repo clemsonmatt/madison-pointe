@@ -1,0 +1,33 @@
+<% content_for :breadcrumb do %>
+    <%= render "shared/breadcrumb", items: ['Profile', 'Contact Info'] %>
+<% end %>
+
+<% content_for :profile_content do %>
+    <div class="panel">
+        <div class="panel-header">
+            <div class="float-right">
+                <%= link_to edit_profile_path(@user), class: 'btn btn-outline-custom btn-sm' do %>
+                    <%= material_icon.create.style('font-size: 16px;') %>
+                    Edit
+                <% end %>
+            </div>
+            Contact Info
+        </div>
+        <div class="panel-body">
+            <dl class="row">
+                <dt class="col-sm-1"><span class="text-center"><%= material_icon.account_circle %></span></dt>
+                <dd class="col-sm-11"><%= @user %></dd>
+            </dl>
+            <dl class="row">
+                <dt class="col-sm-1"><span class="text-center"><%= material_icon.mail %></span></dt>
+                <dd class="col-sm-11"><%= @user.email %></dd>
+            </dl>
+            <dl class="row" style="margin-bottom: 0px;">
+                <dt class="col-sm-1"><span class="text-center"><%= material_icon.phone %></span></dt>
+                <dd class="col-sm-11"><%= @user.phone ? @user.phone : material_icon.block %></dd>
+            </dl>
+        </div>
+    </div>
+<% end %>
+
+<%= render 'profile/layout' %>

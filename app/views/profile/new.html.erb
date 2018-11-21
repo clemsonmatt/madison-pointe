@@ -1,0 +1,43 @@
+<% content_for :breadcrumb do %>
+    <% profile_link = link_to 'Profile', profile_index_path %>
+    <% household_link = link_to 'Household', profile_residents_path %>
+    <%= render "shared/breadcrumb", items: [profile_link, household_link, 'Add Resident'] %>
+<% end %>
+
+<% content_for :profile_content do %>
+    <div class="panel">
+        <div class="panel-header">
+            Add resident
+        </div>
+        <div class="panel-body">
+            <%= bootstrap_form_for @person, url: {action: 'create'} do |f| %>
+                <% if @person.errors.any? %>
+                    <div id="error_explanation">
+                        <h4 class="text-danger">
+                            <%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:
+                        </h4>
+                        <ul>
+                            <% @person.errors.full_messages.each do |msg| %>
+                                <li class="text-danger"><%= msg %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <%= f.text_field :first_name, class: "form-control" %>
+                        <%= f.text_field :last_name, class: "form-control" %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= f.text_field :email, class: "form-control" %>
+                        <%= f.text_field :phone, class: "form-control" %>
+                    </div>
+                </div>
+                <%= f.submit class: "btn btn-primary" %>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<%= render 'profile/layout' %>
