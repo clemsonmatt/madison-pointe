@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
     def new
+        @hide_header = true
     end
 
     def create
@@ -7,7 +8,7 @@ class SessionsController < ApplicationController
 
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect_to dashboard_index_path
+            redirect_to profile_index_path
         else
             flash.now[:danger] = 'Email or password is invalid'
             render :new
@@ -16,6 +17,6 @@ class SessionsController < ApplicationController
 
     def destroy
         session[:user_id] = nil
-        redirect_to new_session_path
+        redirect_to dashboard_index_path
     end
 end
