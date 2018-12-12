@@ -12,12 +12,12 @@
                     <% end %>
 
                     <%= form_tag sessions_path do %>
-                        <div class="text-center text-white">
+                        <%= link_to dashboard_index_path, class: 'text-center text-white', style: 'text-decoration: none;' do %>
                             <h2 style="padding-top: 25px; text-transform: uppercase; letter-spacing: 2px; font-weight: 500;">
                                 <span style="position: relative; top: 5px;">Madison Pointe</span>
                             </h2>
                             <h5 style="font-weight: 400;">homeowners association</h5>
-                        </div>
+                        <% end %>
                         <br>
                         <div class="panel">
                             <div class="panel-body">
