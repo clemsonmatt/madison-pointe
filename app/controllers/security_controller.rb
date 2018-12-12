@@ -14,6 +14,8 @@ class SecurityController < ApplicationController
         @person.verification_token = ('a'..'z').to_a.shuffle[0,8].join
 
         if @person.save
+            UserMailer.with(person: @person).welcome_email.deliver_now
+
             flash[:success] = 'Check your email to verify your account'
             redirect_to login_path
         else
