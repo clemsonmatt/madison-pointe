@@ -37,11 +37,16 @@
                                         <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Password...' %>
                                     </div>
                                 </div>
-                                <button class="btn btn-custom btn-lg btn-block" type="submit">
-                                    Login
-                                </button>
-                                <hr>
+                                <div style="margin-bottom: 10px;">
+                                    <button class="btn btn-custom btn-lg btn-block" type="submit">
+                                        Login
+                                    </button>
+                                </div>
                                 <a href="#">Forgot password?</a>
+                                <a href="#" class="float-right">Need help?</a>
+                            </div>
+                            <div class="panel-footer">
+                                <%= link_to "Create account", new_security_path, class: 'btn btn-custom btn-outline-custom btn-block' %>
                             </div>
                         </div>
                     <% end %>
