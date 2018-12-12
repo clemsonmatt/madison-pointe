@@ -9,8 +9,8 @@ $mpColorDark: #0C1E30;
 
 html, body {
     background-color: #F6F7F8;
-    font-weight: 300;
-    height: 100%;
+    font-weight     : 300;
+    height          : 100%;
 }
 
 .text-md-blue {
@@ -28,38 +28,38 @@ html, body {
 
 .navbar {
     .navbar-brand {
-        color: rgba(255, 255, 255, 1);
+        color         : rgba(255, 255, 255, 1);
         text-transform: uppercase;
-        font-weight: 500;
-        font-size: 1.2em;
+        font-weight   : 500;
+        font-size     : 1.2em;
     }
     .nav-item > .nav-link {
         margin-left: 25px;
-        color: rgba(255, 255, 255, 1);
+        color      : rgba(255, 255, 255, 1);
     }
     .btn {
         background: rgba(0,0,0,0.5);
-        border: 1px solid #fff;
+        border    : 1px solid #fff;
     }
     font-size: 1.2em;
 }
 
 .page-title {
-    color: #e4f2f6;
-    height: 85px;
-    width: 100%;
-    font-size: 3.2em;
-    font-weight: 200;
-    line-height: 2.8;
+    color         : #e4f2f6;
+    height        : 85px;
+    width         : 100%;
+    font-size     : 3.2em;
+    font-weight   : 200;
+    line-height   : 2.8;
     letter-spacing: 1px;
     text-transform: capitalize;
-    padding-top: 175px;
+    padding-top   : 175px;
 }
 
 .header-body {
-    background: url(asset_path('madison-pointe.jpg'));
+    background         : url(asset_path('madison-pointe.jpg'));
     background-position: center 40%;
-    background-size: 100% auto;
+    background-size    : 100% auto;
 }
 
 .page-image {
@@ -68,12 +68,12 @@ html, body {
     height: 100%;
 
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-repeat  : no-repeat;
+    background-size    : cover;
 }
 
 h1, h2, h3, h4, h5 {
-    font-weight: 100;
+    font-weight   : 100;
     letter-spacing: 1px;
 }
 
@@ -92,46 +92,50 @@ h1, h2, h3, h4, h5 {
 
 .btn {
     i {
-        font-size: 16px;
-        margin-top: 3px;
+        font-size   : 16px;
+        margin-top  : 3px;
         margin-right: 3px;
-        float: left;
+        float       : left;
     }
 }
 .btn-custom {
     background-color: $mpColor;
-    color: #fff;
+    color           : #fff;
 }
 .btn-outline-custom {
     background-color: inherit;
-    color: $mpColor !important;
-    border: 1px solid $mpColor;
+    color           : $mpColor !important;
+    border          : 1px solid $mpColor;
 }
 
 a {
     color: $mpColor;
     &:hover {
-        color: $mpColorDark;
+        color          : $mpColorDark;
         text-decoration: underline;
     }
 }
 
 
 .panel {
-    color: #868e96;
+    color           : #868e96;
     background-color: #ffffff;
-    border: 1px solid #e9ecef;
-    border-radius: 6px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.06), 0 6px 6px rgba(0,0,0,0.08);
+    border          : 1px solid #e9ecef;
+    border-radius   : 6px;
+    box-shadow      : 0 10px 20px rgba(0,0,0,0.06), 0 6px 6px rgba(0,0,0,0.08);
 
     .panel-header {
-        font-size: 1.5em;
-        font-weight: 100;
+        font-size     : 1.5em;
+        font-weight   : 100;
         letter-spacing: 1px;
-        padding: 15px 25px 10px 25px;
-        border-bottom: 1px solid #e9ecef;
+        padding       : 15px 25px 10px 25px;
+        border-bottom : 1px solid #e9ecef;
     }
     .panel-body {
         padding: 20px 25px 15px 25px;
+    }
+    .panel-footer {
+        padding   : 15px 25px;
+        border-top: 1px solid #ddd;
     }
 }

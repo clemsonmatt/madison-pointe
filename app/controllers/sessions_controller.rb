@@ -1,16 +1,27 @@
 class SessionsController < ApplicationController
+    def index
+        redirect_to login_path
+    end
+
     def new
         @hide_header = true
     end
 
     def create
+        @hide_header = true
+
         user = Person.find_by(email: params[:email])
 
-        if user && user.authenticate(params[:password])
+        if user && user.is_active && user.authenticate(params[:password])
             session[:user_id] = user.id
             redirect_to profile_index_path
         else
-            flash.now[:danger] = 'Email or password is invalid'
+            if user && ! user.is_active
+                flash.now[:danger] = 'Account is not active'
+            else
+                flash.now[:danger] = 'Email or password is invalid'
+            end
+
             render :new
         end
     end
