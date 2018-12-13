@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
     resources :profile,
         :sessions,
-        :security
+        :security,
+        :directory
 
     # session
     get 'login', to: 'sessions#new', as: 'login'
