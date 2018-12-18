@@ -1,0 +1,50 @@
+<% @hide_header = true %>
+
+<div id="wrapper">
+    <div class="sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <div class="clearfix text-center" style="width: 250px;">
+                <a href="/" class="navbar-brand">
+                    MPHOA
+                </a>
+            </div>
+
+            <ul id="side-menu" class="nav">
+                <li>
+                    <a href="#">People</a>
+                </li>
+                <li>
+                    <a href="#">Dues</a>
+                </li>
+                <li>
+                    <a href="#">Resources</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="header">
+        <div class="profile dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= material_icon.account_circle.md_36 %>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <%= link_to "Logout", logout_path %>
+                </li>
+            </ul>
+        </div>
+        <%= yield :header_title %>
+    </div>
+
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+            <button type="button" class="close" data-dismiss="alert" style="font-size: 1.8em;">&times;</button>
+            <%= value %>
+        </div>
+    <% end %>
+
+    <div id="content">
+        <%= yield :manage_content %>
+    </div>
+</div>
