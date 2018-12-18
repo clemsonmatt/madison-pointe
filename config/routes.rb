@@ -4,6 +4,10 @@ Rails.application.routes.draw do
         :security,
         :directory
 
+    namespace :manage do
+        resources :people
+    end
+
     # session
     get 'login', to: 'sessions#new', as: 'login'
     get 'logout', to: 'sessions#destroy', as: 'logout'
