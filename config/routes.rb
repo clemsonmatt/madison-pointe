@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     get 'profile-residents', to: 'profile#residents', as: 'profile_residents'
     delete 'profile-resident-delete/:id', to: 'profile#resident_delete', as: 'profile_resident_delete'
 
+    # directory
+    get 'all-people', to: 'directory#all', as: 'directory_all'
+
     get 'verify-account/:verification_token', to: 'security#verify_email', as: 'security_verify_email'
 
     get 'dashboard/index'

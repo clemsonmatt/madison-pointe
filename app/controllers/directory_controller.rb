@@ -1,5 +1,11 @@
 class DirectoryController < ApplicationController
+    before_action :logged_in?
+
     def index
+        @people = Person.where.not(officer_position: nil)
+    end
+
+    def all
         # @people = Person.where(active: true).where.not(verified_at: nil)
         @people = Person.where(active: true)
 
