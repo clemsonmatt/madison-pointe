@@ -1,0 +1,55 @@
+<% content_for :page_title do %>
+    <%= render "shared/page_title", title: 'Directory' %>
+<% end %>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
+            <%= link_to directory_index_path, :class => 'nav-link ' + (request.path == '/directory' ? 'active' : '') do %>
+                <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.contacts.style('font-size: 18px;') %></div>
+                Officers
+            <% end %>
+            <%= link_to directory_all_path, :class => 'nav-link ' + (request.path == '/all-people' ? 'active' : '') do %>
+                <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.card_membership.style('font-size: 18px;') %></div>
+                All people
+            <% end %>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <% @people.each do |person| %>
+            <div class="panel" style="margin-bottom: 15px;">
+                <div class="panel-body" style="padding-bottom: 0px;">
+                    <h5 class="text-mp">
+                        <%= person %>
+                        <small>
+                            &ndash; <%= person.officer_position %>
+                        </small>
+                    </h5>
+                    <hr style="margin: 10px 0px;">
+                    <ul style="list-style: none;">
+                        <li class="clearfix">
+                            <div style="float: left; padding-top: 2px; margin-right: 10px;">
+                                <%= material_icon.email.style('padding-bottom: -5px;').style('font-size: 18px;') %>
+                            </div>
+                            <% if person.email != '' %>
+                                <%= person.email %>
+                            <% else %>
+                                Not set
+                            <% end %>
+                        </li>
+                        <li class="clearfix">
+                            <div style="float: left; padding-top: 2px; margin-right: 10px;">
+                                <%= material_icon.phone.style('padding-bottom: -5px;').style('font-size: 18px;') %>
+                            </div>
+                            <% if person.phone != '' %>
+                                <%= person.phone %>
+                            <% else %>
+                                Not set
+                            <% end %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

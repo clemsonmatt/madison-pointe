@@ -21,18 +21,18 @@
                             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <%= link_to 'News', dashboard_index_path, class: 'nav-link' %>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            Directory
-                                        </a>
+                                        <%= link_to 'Annoucements', dashboard_index_path, class: 'nav-link' %>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">
                                             Resources
                                         </a>
                                     </li>
+                                    <% if @user %>
+                                        <li class="nav-item">
+                                            <%= link_to 'Directory', directory_index_path, class: 'nav-link' %>
+                                        </li>
+                                    <% end %>
                                 </ul>
                                 <ul class="navbar-nav ml-auto">
                                     <% if @user %>

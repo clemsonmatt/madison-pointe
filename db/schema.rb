@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181212184419) do
+ActiveRecord::Schema.define(version: 20181218152101) do
 
   create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20181212184419) do
     t.datetime "verified_at"
     t.boolean "active", default: false, null: false
     t.string "verification_token"
+    t.string "officer_position"
     t.index ["email"], name: "index_people_on_email"
   end
 

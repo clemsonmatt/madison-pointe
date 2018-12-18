@@ -8,6 +8,18 @@ class Person < ApplicationRecord
         self.active && self.email_verified_at
     end
 
+    def street_address
+        if ! self.street_number
+            return nil
+        end
+
+        Person.valid_street_numbers.each do |street_name, numbers|
+            if numbers.include? self.street_number
+                return "#{self.street_number} #{street_name}"
+            end
+        end
+    end
+
     def self.valid_street_numbers
         {
             'Madison Pointe Dr': [
