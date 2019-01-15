@@ -1,0 +1,19 @@
+<% content_for :header_title do %>
+    People
+<% end %>
+
+<% content_for :breadcrumb do %>
+    <% people_path = link_to 'People', manage_people_path %>
+    <%= render "shared/manage_breadcrumb", items: [people_path, @person] %>
+<% end %>
+
+<% content_for :profile_content do %>
+    <div class="panel">
+        <div class="panel-body">
+            <h3>Profile</h3>
+            <br>
+        </div>
+    </div>
+<% end %>
+
+<%= render 'manage/people/profile_layout' %>

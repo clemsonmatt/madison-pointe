@@ -36,7 +36,9 @@
                                 <%= person.is_active ? 'Active' : 'Inactive' %>
                             </span>
                         </td>
-                        <td></td>
+                        <td width="1%">
+                            <%= link_to 'View', manage_person_profile_path(person.id), class: 'btn btn-xs btn-outline-custom' %>
+                        </td>
                     </tr>
                 <% end %>
             </table>

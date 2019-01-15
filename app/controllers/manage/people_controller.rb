@@ -4,4 +4,8 @@ class Manage::PeopleController < ApplicationController
     def index
         @people = Person.all.order('street_number')
     end
+
+    def profile
+        @person = Person.find(params[:id])
+    end
 end
