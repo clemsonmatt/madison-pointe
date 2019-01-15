@@ -11,7 +11,7 @@
 
             <ul id="side-menu" class="nav">
                 <li>
-                    <a href="#">People</a>
+                    <%= link_to 'People', manage_people_path, :class => request.path.include?('/manage/people') ? 'active' : '' %>
                 </li>
                 <li>
                     <a href="#">Dues</a>
