@@ -5,9 +5,11 @@
             <hr>
             <center>
                 <h3 style="margin: 20px 0px 0px 0px;"><%= @person %></h3>
-                <span class="badge <%= @person.is_active ? 'badge-success' : 'badge-danger' %>">
+                <p class="badge <%= @person.is_active ? 'badge-success' : 'badge-danger' %>">
                     <%= @person.is_active ? 'Active' : 'Inactive' %>
-                </span>
+                </p>
+                <br>
+                <h5><%= @person.street_address %></h5>
             </center>
             <hr>
             <div class="nav flex-column nav-pills" id="v-pills-tab">

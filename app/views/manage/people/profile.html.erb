@@ -12,6 +12,56 @@
         <div class="panel-body">
             <h3>Profile</h3>
             <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table">
+                        <tr>
+                            <th>First name</th>
+                            <td><%= @person.first_name %></td>
+                        </tr>
+                        <tr>
+                            <th>Last name</th>
+                            <td><%= @person.last_name %></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>
+                                <% if @person.email %>
+                                    <%= @person.email %>
+                                <% else %>
+                                    <span style="color: #ccc;">Not set</span>
+                                <% end %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Phone</th>
+                            <td>
+                                <% if @person.phone %>
+                                    <%= @person.phone %>
+                                <% else %>
+                                    <span style="color: #ccc;">Not set</span>
+                                <% end %>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="table">
+                        <tr>
+                            <th>Address</th>
+                            <td><%= @person.street_address %></td>
+                        </tr>
+                        <tr>
+                            <th>Email verified</th>
+                            <td class="<%= 'text-danger' if ! @person.email_verified_at %>"><%= @person.email_verified_at ? @person.email_verified_at.strftime('%d/%m/%y') : 'Not verified' %></td>
+                        </tr>
+                        <tr>
+                            <th>Account verified</th>
+                            <td class="<%= 'text-danger' if ! @person.verified_at %>"><%= @person.verified_at ? @person.email_verified_at.strftime('%d/%m/%y') : 'Not verified' %></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 <% end %>
