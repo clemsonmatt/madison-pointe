@@ -15,9 +15,22 @@
             <table class="table table-hover">
                 <% @people.each do |person| %>
                     <tr>
+                        <td><%= person.street_address %></td>
                         <td><%= person %></td>
-                        <td><%= person.email %></td>
-                        <td><%= person.phone %></td>
+                        <td>
+                            <% if person.email %>
+                                <%= person.email %>
+                            <% else %>
+                                <span style="color: #ccc;">Not set</span>
+                            <% end %>
+                        </td>
+                        <td>
+                            <% if person.phone %>
+                                <%= person.phone %>
+                            <% else %>
+                                <span style="color: #ccc;">Not set</span>
+                            <% end %>
+                        </td>
                         <td>
                             <span class="badge <%= person.is_active ? 'badge-success' : 'badge-danger' %>">
                                 <%= person.is_active ? 'Active' : 'Inactive' %>
