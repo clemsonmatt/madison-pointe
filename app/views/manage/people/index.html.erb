@@ -2,8 +2,33 @@
     People
 <% end %>
 
+<% content_for :breadcrumb do %>
+    <% people_path = link_to 'People', manage_people_path %>
+    <%= render "shared/manage_breadcrumb", items: [people_path, 'All People'] %>
+<% end %>
+
 <% content_for :manage_content do %>
-    manage/people content
+    <div class="panel">
+        <div class="panel-body">
+            <h3>All People</h3>
+            <br>
+            <table class="table table-hover">
+                <% @people.each do |person| %>
+                    <tr>
+                        <td><%= person %></td>
+                        <td><%= person.email %></td>
+                        <td><%= person.phone %></td>
+                        <td>
+                            <span class="badge <%= person.is_active ? 'badge-success' : 'badge-danger' %>">
+                                <%= person.is_active ? 'Active' : 'Inactive' %>
+                            </span>
+                        </td>
+                        <td></td>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+    </div>
 <% end %>
 
 <%= render 'manage/layout' %>
