@@ -8,4 +8,13 @@ class Manage::PeopleController < ApplicationController
     def profile
         @person = Person.find(params[:id])
     end
+
+    def verify_account
+        @person = Person.find(params[:id])
+
+        @person.verified_at = DateTime.now
+        @person.save
+
+        redirect_to manage_person_profile_path(@person.id)
+    end
 end

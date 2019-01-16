@@ -38,7 +38,7 @@
         <div class="col-md-9">
             <% if ! @person.verified_at %>
                 <div class="alert alert-warning">
-                    <a href="#" class="btn btn-warning btn-sm float-right">Verify</a>
+                    <%= link_to 'Verify', manage_person_verify_account_path(@person.id), class: 'btn btn-warning btn-sm float-right' %>
                     <strong>
                         <div style="float: left; padding-top: 2px; margin-right: 4px;">
                             <%= material_icon.error_outline.style('font-size: 20px;') %>
