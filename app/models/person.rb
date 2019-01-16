@@ -5,7 +5,11 @@ class Person < ApplicationRecord
     end
 
     def is_active
-        self.active && self.email_verified_at
+        if self.email == nil
+            return self.active && self.verified_at
+        end
+
+        self.active && self.email_verified_at && self.verified_at
     end
 
     def street_address

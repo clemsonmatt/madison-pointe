@@ -1,6 +1,6 @@
 <% content_for :manage_content do %>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-lg-3 col-md-5">
             <div style="width: 100%; height: 250px; background-color: #ddd; border-radius: 5px;"></div>
             <hr>
             <center>
@@ -35,8 +35,8 @@
                 </a>
             </div>
         </div>
-        <div class="col-md-9">
-            <% if ! @person.verified_at %>
+        <div class="col-lg-9 col-md-7">
+            <% if ! @person.is_active %>
                 <div class="alert alert-warning">
                     <%= link_to 'Verify', manage_person_verify_account_path(@person.id), class: 'btn btn-warning btn-sm float-right' %>
                     <strong>

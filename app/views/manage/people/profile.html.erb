@@ -8,12 +8,12 @@
 <% end %>
 
 <% content_for :profile_content do %>
-    <div class="panel">
-        <div class="panel-body">
-            <h3>Profile</h3>
-            <br>
-            <div class="row">
-                <div class="col-md-6">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel">
+                <div class="panel-body">
+                    <h3>Profile</h3>
+                    <br>
                     <table class="table">
                         <tr>
                             <th>First name</th>
@@ -43,23 +43,70 @@
                                 <% end %>
                             </td>
                         </tr>
-                    </table>
-                </div>
-                <div class="col-md-6">
-                    <table class="table">
                         <tr>
                             <th>Address</th>
                             <td><%= @person.street_address %></td>
                         </tr>
-                        <tr>
-                            <th>Email verified</th>
-                            <td class="<%= 'text-danger' if ! @person.email_verified_at %>"><%= @person.email_verified_at ? @person.email_verified_at.strftime('%d/%m/%y') : 'Not verified' %></td>
-                        </tr>
-                        <tr>
-                            <th>Account verified</th>
-                            <td class="<%= 'text-danger' if ! @person.verified_at %>"><%= @person.verified_at ? @person.email_verified_at.strftime('%d/%m/%y') : 'Not verified' %></td>
-                        </tr>
                     </table>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel">
+                <div class="panel-body">
+                    <h3>
+                        Status
+                        <small style="font-size: 0.6em;">
+                            <span class="badge <%= @person.is_active ? 'badge-success' : 'badge-danger' %>">
+                                <%= @person.is_active ? 'Active' : 'Inactive' %>
+                            </span>
+                        </small>
+                    </h3>
+                    <br>
+                    <dl>
+                        <dt>Account status</dt>
+                        <dd>
+                            <% if @person.active %>
+                                <span class="text-success">
+                                    <span style="padding-top: 4px;"><%= material_icon.checkmark.style('font-size: 16px;') %></span>
+                                    Active
+                                </span>
+                            <% else %>
+                                <span class="badge badge-danger">
+                                    Inactive
+                                </span>
+                            <% end %>
+                        </dd>
+                        <dt>Email verified</dt>
+                        <dd>
+                            <% if @person.email_verified_at %>
+                                <span class="text-success">
+                                    <span style="padding-top: 4px;"><%= material_icon.checkmark.style('font-size: 16px;') %></span>
+                                    <%= @person.email_verified_at.strftime('%m/%d/%y') %>
+                                </span>
+                            <% elsif @person.email == nil %>
+                                Email not set
+                            <% else %>
+                                <span class="badge badge-danger">
+                                    Not verified
+                                </span>
+                            <% end %>
+                        </dd>
+                        <dt>Account verified</dt>
+                        <dd>
+                            <% if @person.verified_at %>
+                                <span class="text-success">
+                                    <span style="padding-top: 4px;"><%= material_icon.checkmark.style('font-size: 16px;') %></span>
+                                    <%= @person.verified_at.strftime('%m/%d/%y') %>
+                                </span>
+                            <% else %>
+                                <span class="badge badge-danger">
+                                    Not verified
+                                </span>
+                            <% end %>
+                        </dd>
+                    </dl>
                 </div>
             </div>
         </div>
