@@ -9,6 +9,11 @@ class Manage::PeopleController < ApplicationController
         @person = Person.find(params[:id])
     end
 
+    def residents
+        @person = Person.find(params[:id])
+        @residents = Person.where(street_number: @person.street_number)
+    end
+
     def verify_account
         @person = Person.find(params[:id])
 

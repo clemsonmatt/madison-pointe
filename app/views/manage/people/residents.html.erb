@@ -1,0 +1,49 @@
+<% content_for :header_title do %>
+    People
+<% end %>
+
+<% content_for :breadcrumb do %>
+    <% people_path = link_to 'People', manage_people_path %>
+    <% profile_path = link_to @person, manage_person_profile_path(@person.id) %>
+    <%= render "shared/manage_breadcrumb", items: [people_path, profile_path, 'Household'] %>
+<% end %>
+
+<% content_for :profile_content do %>
+    <div class="panel">
+        <div class="panel-body">
+            <h3>Household</h3>
+            <br>
+            <table class="table">
+                <% @residents.each do |resident| %>
+                    <tr>
+                        <td><%= resident %></td>
+                        <td>
+                            <% if resident.email %>
+                                <%= resident.email %>
+                            <% else %>
+                                <span style="color: #ccc;">Not set</span>
+                            <% end %>
+                        </td>
+                        <td>
+                            <% if resident.phone %>
+                                <%= resident.phone %>
+                            <% else %>
+                                <span style="color: #ccc;">Not set</span>
+                            <% end %>
+                        </td>
+                        <td>
+                            <span class="badge <%= resident.is_active ? 'badge-success' : 'badge-danger' %>">
+                                <%= resident.is_active ? 'Active' : 'Inactive' %>
+                            </span>
+                        </td>
+                        <td width="1%">
+                            <%= link_to 'View', manage_person_profile_path(resident.id), class: 'btn btn-xs btn-outline-custom float-right' %>
+                        </td>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+    </div>
+<% end %>
+
+<%= render 'manage/people/profile_layout' %>

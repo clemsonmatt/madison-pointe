@@ -4,7 +4,7 @@
 
 <% content_for :breadcrumb do %>
     <% people_path = link_to 'People', manage_people_path %>
-    <%= render "shared/manage_breadcrumb", items: [people_path, @person] %>
+    <%= render "shared/manage_breadcrumb", items: [people_path, @person, 'Profile'] %>
 <% end %>
 
 <% content_for :profile_content do %>
