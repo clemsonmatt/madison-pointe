@@ -17,14 +17,6 @@
                     <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.account_circle.style('font-size: 18px;') %></div>
                     Profile
                 <% end %>
-                <%= link_to manage_person_residents_path(@person.id), :class => 'nav-link ' + (request.path.include?('/residents') ? 'active' : '') do %>
-                    <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.home.style('font-size: 18px;') %></div>
-                    Household
-                <% end %>
-                <a class="nav-link" id="v-pills-notifications-tab" data-toggle="pill" href="#notifications" role="tab">
-                    <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.notifications.style('font-size: 18px;') %></div>
-                    Notifications
-                </a>
                 <a class="nav-link" id="v-pills-dues-tab" data-toggle="pill" href="#dues" role="tab">
                     <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.attach_money.style('font-size: 18px;') %></div>
                     Dues
