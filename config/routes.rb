@@ -20,7 +20,6 @@ Rails.application.routes.draw do
     get 'all-people', to: 'directory#all', as: 'directory_all'
 
     # manage people
-    get 'manage/people/:id/profile', to: 'manage/people#profile', as: 'manage_person_profile'
     get 'manage/people/:id/residents', to: 'manage/people#residents', as: 'manage_person_residents'
     get 'manage/people/:id/verify-account', to: 'manage/people#verify_account', as: 'manage_person_verify_account'
 

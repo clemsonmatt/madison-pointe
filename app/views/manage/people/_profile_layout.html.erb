@@ -13,7 +13,7 @@
             </center>
             <hr>
             <div class="nav flex-column nav-pills" id="v-pills-tab">
-                <%= link_to manage_person_profile_path, :class => 'nav-link ' + (request.path.include?('/profile') ? 'active' : '') do %>
+                <%= link_to manage_person_path(@person.id), :class => 'nav-link ' + (true ? 'active' : '') do %>
                     <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.account_circle.style('font-size: 18px;') %></div>
                     Profile
                 <% end %>

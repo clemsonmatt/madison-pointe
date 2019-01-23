@@ -1,0 +1,48 @@
+<% content_for :breadcrumb do %>
+    <% people_path = link_to 'People', manage_people_path %>
+    <%= render "shared/manage_breadcrumb", items: [people_path, @person, 'Edit Profile'] %>
+<% end %>
+
+<% content_for :profile_content do %>
+    <div class="panel">
+        <div class="panel-header">
+            <div class="float-right">
+                <%= link_to manage_person_path(@person.id), class: 'btn btn-outline-custom btn-sm' do %>
+                    <%= material_icon.arrow_back %>
+                    Back
+                <% end %>
+            </div>
+            Edit Profile
+        </div>
+        <div class="panel-body">
+            <%= bootstrap_form_for @person, url: {action: 'update'} do |f| %>
+                <% if @person.errors.any? %>
+                    <div id="error_explanation">
+                        <h4 class="text-danger">
+                            <%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:
+                        </h4>
+                        <ul>
+                            <% @person.errors.full_messages.each do |msg| %>
+                                <li class="text-danger"><%= msg %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <%= f.text_field :first_name, class: "form-control" %>
+                        <%= f.text_field :last_name, class: "form-control" %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= f.text_field :email, class: "form-control" %>
+                        <%= f.text_field :phone, class: "form-control" %>
+                    </div>
+                </div>
+                <%= f.submit class: "btn btn-custom" %>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<%= render 'manage/people/profile_layout' %>
