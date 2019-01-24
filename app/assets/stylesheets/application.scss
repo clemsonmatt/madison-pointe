@@ -3,8 +3,9 @@
 
 // $mpColor: #0A7;
 // $mpColor: #2c3e50;
-$mpColor: #2980b9;
 // $mpColor: #2f3640;
+// $mpColor: #2980b9;
+$mpColor    : #1e88e5;
 $mpColorDark: #0C1E30;
 
 html, body {
@@ -107,6 +108,12 @@ h1, h2, h3, h4, h5 {
     color           : $mpColor !important;
     border          : 1px solid $mpColor;
 }
+.btn-xs {
+    padding      : .35rem .4rem;
+    font-size    : .875rem;
+    line-height  : .5;
+    border-radius: .2rem;
+}
 
 a {
     color: $mpColor;
@@ -118,11 +125,12 @@ a {
 
 
 .panel {
-    color           : #868e96;
+    color           : #565e66;
     background-color: #ffffff;
-    border          : 1px solid #e9ecef;
-    border-radius   : 6px;
-    box-shadow      : 0 10px 20px rgba(0,0,0,0.06), 0 6px 6px rgba(0,0,0,0.08);
+    // border          : 1px solid #e9ecef;
+    border-radius: 6px;
+    // box-shadow   : 0 10px 20px rgba(0,0,0,0.06), 0 6px 6px rgba(0,0,0,0.08);
+    box-shadow: 2px 6px 15px 0 rgba(69,65,78,.1);
 
     .panel-header {
         font-size     : 1.5em;
@@ -152,8 +160,9 @@ a {
 }
 
 #content {
-    padding         : 0 15px;
-    background-color: #F6F7F8;
+    padding: 0 15px;
+    // background-color: #F6F7F8;
+    background-color: #f9fbfd;
 }
 
 @media(min-width:768px) {
@@ -162,7 +171,7 @@ a {
         margin        : 0 0 0 250px;
         padding       : 30px;
         padding-bottom: 0px;
-        min-height    : calc(100% - 84px);
+        min-height    : calc(100% - 94px);
         min-width     : calc(100% - 250px);
     }
 
@@ -214,51 +223,47 @@ a {
     #header {
         min-width     : calc(100% - 250px);
         margin        : 0 0 0 250px;
-        background    : $mpColor;
-        color         : #fafafa;
-        height        : 84px;
+        background    : #f9fbfd;
+        height        : 75px;
         font-size     : 2.2em;
         padding       : 5px 30px;
-        line-height   : 2.2em;
+        line-height   : 1.8em;
         text-transform: uppercase;
 
         .profile a {
-            background-color: $mpColor;
+            background-color: #f9fbfd;
             float           : right;
-            margin          : -5px -30px 0px 0px;
-            width           : 100px;
             text-align      : center;
-            color           : #fafafa;
+            color           : #333;
             font-size       : 1.8em;
-            max-height      : 84px;
+            max-height      : 74px;
+            line-height     : 0.9em;
         }
-        .profile ul {
-            padding   : 0px;
-            margin-top: 0px;
-            li a {
-                background-color: inherit;
-                margin          : inherit;
-                width           : inherit;
-                font-size       : inherit;
-                color           : inherit;
-                float           : left;
-                padding-left    : 25px;
-            }
+        .profile div a {
+            background-color: inherit;
+            font-size       : 0.8em;
+            color           : inherit;
+            float           : left;
+            text-align      : left;
+            height          : inherit;
+            line-height     : 30px;
         }
     }
 }
 
 /* sidebar */
 .sidebar {
-    border          : none;
-    box-shadow      : 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-    background-color: #e9ecef;
+    border    : none;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    // background-color: #e9ecef;
+    background-color: $mpColor;
 
     .navbar-brand {
-        width           : 100%;
-        height          : 84px;
-        background-color: #e9ecef;
-        color           : $mpColor;
+        width : 100%;
+        height: 74px;
+        // background-color: #e9ecef;
+        background-color: $mpColor;
+        color           : #f9fbfd;
         text-transform  : uppercase;
         line-height     : 2.2em;
         font-size       : 2.2em;
@@ -278,7 +283,7 @@ a {
         line-height: 3.2em;
 
         a {
-            color          : $mpColorDark;
+            color          : #f9fbfd;
             padding        : 5px 25px;
             font-size      : 1.1em;
             transition     : all 0.3s ease 0s;
@@ -289,7 +294,7 @@ a {
 
             &:hover,
             &:focus {
-                background-color: #d9dcdf;
+                background-color: #0e78d5;
             }
 
             i {
@@ -344,7 +349,7 @@ a {
 }
 
 .sidebar ul li a.active {
-    background-color: #2C3E50;
+    background-color: #0e78d5;
 }
 
 .sidebar .arrow {
@@ -379,4 +384,10 @@ a {
         width     : 250px;
         min-height: 100%;
     }
+}
+
+.breadcrumb-mp {
+    background-color: #f9fbfd;
+    margin          : -10px 0px 0px 250px;
+    padding         : 0px 30px;
 }

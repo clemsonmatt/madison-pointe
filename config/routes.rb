@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     # directory
     get 'all-people', to: 'directory#all', as: 'directory_all'
 
+    # manage people
+    get 'manage/people/:id/residents', to: 'manage/people#residents', as: 'manage_person_residents'
+    get 'manage/people/:id/verify-account', to: 'manage/people#verify_account', as: 'manage_person_verify_account'
+
     get 'verify-account/:verification_token', to: 'security#verify_email', as: 'security_verify_email'
 
     get 'dashboard/index'

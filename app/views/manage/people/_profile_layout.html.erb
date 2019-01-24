@@ -1,0 +1,48 @@
+<% content_for :manage_content do %>
+    <div class="row">
+        <div class="col-lg-3 col-md-5">
+            <div style="width: 100%; height: 250px; background-color: #ddd; border-radius: 5px;"></div>
+            <hr>
+            <center>
+                <h3 style="margin: 20px 0px 0px 0px;"><%= @person %></h3>
+                <p class="badge <%= @person.is_active ? 'badge-success' : 'badge-danger' %>">
+                    <%= @person.is_active ? 'Active' : 'Inactive' %>
+                </p>
+                <br>
+                <h5><%= @person.street_address %></h5>
+            </center>
+            <hr>
+            <div class="nav flex-column nav-pills" id="v-pills-tab">
+                <%= link_to manage_person_path(@person.id), :class => 'nav-link ' + (true ? 'active' : '') do %>
+                    <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.account_circle.style('font-size: 18px;') %></div>
+                    Profile
+                <% end %>
+                <a class="nav-link" id="v-pills-dues-tab" data-toggle="pill" href="#dues" role="tab">
+                    <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.attach_money.style('font-size: 18px;') %></div>
+                    Dues
+                </a>
+                <a class="nav-link" id="v-pills-permissions-tab" data-toggle="pill" href="#permissions" role="tab">
+                    <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.settings.style('font-size: 18px;') %></div>
+                    Permissions
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-7">
+            <% if ! @person.is_active %>
+                <div class="alert alert-warning">
+                    <%= link_to 'Verify', manage_person_verify_account_path(@person.id), class: 'btn btn-warning btn-sm float-right' %>
+                    <strong>
+                        <div style="float: left; padding-top: 2px; margin-right: 4px;">
+                            <%= material_icon.error_outline.style('font-size: 20px;') %>
+                        </div>
+                        Warning!
+                    </strong>
+                    This account has not been verified.
+                </div>
+            <% end %>
+            <%= yield :profile_content %>
+        </div>
+    </div>
+<% end %>
+
+<%= render 'manage/layout' %>
