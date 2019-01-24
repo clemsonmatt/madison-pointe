@@ -12,11 +12,11 @@ class SessionsController < ApplicationController
 
         user = Person.find_by(email: params[:email])
 
-        if user && user.is_active && user.authenticate(params[:password])
+        if user && user.is_active(true) && user.authenticate(params[:password])
             session[:user_id] = user.id
             redirect_to profile_index_path
         else
-            if user && ! user.is_active
+            if user && ! user.is_active(true)
                 flash.now[:danger] = 'Account is not active'
             else
                 flash.now[:danger] = 'Email or password is invalid'
