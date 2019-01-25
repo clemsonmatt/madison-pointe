@@ -14,7 +14,7 @@
                     <%= link_to 'People', manage_people_path, :class => request.path.include?('/manage/people') ? 'active' : '' %>
                 </li>
                 <li>
-                    <a href="#">Dues</a>
+                    <%= link_to 'Dues', manage_dues_path, :class => request.path.include?('/manage/dues') ? 'active' : '' %>
                 </li>
                 <li>
                     <a href="#">Resources</a>

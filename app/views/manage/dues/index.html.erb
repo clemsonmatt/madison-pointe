@@ -1,0 +1,31 @@
+<% content_for :header_title do %>
+    Dues
+<% end %>
+
+ <% content_for :breadcrumb do %>
+    <% dues_path = link_to 'Dues', manage_dues_path %>
+    <%= render "shared/manage_breadcrumb", items: [dues_path, @year + ' Dues'] %>
+<% end %>
+
+<% content_for :manage_content do %>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-body">
+                    <h3><%= @year %> Dues</h3>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="panel">
+                <div class="panel-body">
+                    <h3>Payments for <%= @year %></h3>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<%= render 'manage/layout' %>
