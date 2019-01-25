@@ -1,0 +1,50 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - 'Dangerfile'
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'app/controllers/graphql_controller.rb'
+
+Lint/UnneededCopDisableDirective:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+Style/ClassAndModuleChildren:
+  AutoCorrect: true
+  EnforcedStyle: nested
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Naming/UncommunicativeMethodParamName:
+  AllowedNames: io, id, to, by, on, in, at, ip, e
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Style/NumericLiterals:
+  Exclude:
+    - 'spec/**/*'
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+Style/Documentation:
+  Enabled: false
