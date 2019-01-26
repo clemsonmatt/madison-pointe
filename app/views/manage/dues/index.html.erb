@@ -14,6 +14,10 @@
                 <div class="panel-body">
                     <h3><%= @year %> Dues</h3>
                     <br>
+                    <%= bootstrap_form_for @dues, url: manage_due_path(@dues) do |f| %>
+                        <%= f.text_field :amount, prepend: "$", value: number_with_precision(@dues.amount, precision: 2) %>
+                        <%= f.submit 'Update', class: 'btn btn-custom' %>
+                    <% end %>
                 </div>
             </div>
         </div>
