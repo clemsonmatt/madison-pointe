@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 
         if user && user.is_active(true) && user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect_to profile_index_path
+            redirect_to dashboard_index_path
         else
             if user && ! user.is_active(true)
                 flash.now[:danger] = 'Account is not active'
