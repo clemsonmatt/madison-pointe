@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :profile,
             :sessions,
             :security,
-            :directory
+            :directory,
+            :resources
 
   namespace :manage do
     resources :people,
