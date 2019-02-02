@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  street_number: 1
+  paid: false
+  date: 
+
+two:
+  street_number: 1
+  paid: false
+  date: 

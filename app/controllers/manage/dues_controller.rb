@@ -2,8 +2,8 @@ module Manage
   class DuesController < ApplicationController
     def index
       @year = Date.current.strftime('%Y')
-
       @dues = Manage::DuesHelper.find_or_create_dues(@year)
+      @house_dues = Manage::DuesHelper.find_or_create_house_dues(@dues)
     end
 
     def update
