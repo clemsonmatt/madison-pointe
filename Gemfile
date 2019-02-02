@@ -58,3 +58,5 @@ gem 'bootstrap', '~> 4.1.2'
 gem 'jquery-rails'
 gem 'bootstrap_form'
 gem 'material_icons'
+gem 'stripe'
+gem 'dotenv-rails', groups: [:development, :test]

@@ -17,6 +17,12 @@ class Person < ApplicationRecord
     Due.find_by year: year
   end
 
+  def amount_due_for_year_stripe(year)
+    due = amount_due_for_year(year)
+
+    (due.amount * 100).to_i
+  end
+
   def paid_yearly_dues?(year)
     dues = DuesHouse.find_by due: amount_due_for_year(year), house: house
 
