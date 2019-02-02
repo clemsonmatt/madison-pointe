@@ -38,14 +38,14 @@
 
     <%= yield :breadcrumb %>
 
-    <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>">
-            <button type="button" class="close" data-dismiss="alert" style="font-size: 1.8em;">&times;</button>
-            <%= value %>
-        </div>
-    <% end %>
-
     <div id="content">
+        <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>">
+                <button type="button" class="close" data-dismiss="alert" style="font-size: 1.8em;">&times;</button>
+                <%= value %>
+            </div>
+        <% end %>
+
         <%= yield :manage_content %>
     </div>
 </div>
