@@ -1,50 +1,60 @@
 <% content_for :page_title do %>
-    <%= render "shared/page_title", title: 'Madison Pointe HOA' %>
+    <%= render "shared/page_title", title: 'Announcements' %>
 <% end %>
 
 <div class="row">
-    <div class="col-md-5">
-        <h4 class="text-md-blue">Latest Posts</h4>
-        <ul class="list-group" style="margin-top: 10px;">
-            <li class="list-group-item">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1 text-dark-blue">
-                        173 | Ellis
-                    </h5>
-                    <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1 text-muted">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small>
-                    2 replys | 4 likes
-                </small>
-            </li>
-            <li class="list-group-item">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1 text-dark-blue">
-                        173 | Ellis
-                    </h5>
-                    <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1 text-muted">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small>
-                    2 replys | 4 likes
-                </small>
-            </li>
-            <li class="list-group-item">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1 text-dark-blue">
-                        173 | Ellis
-                    </h5>
-                    <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1 text-muted">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small>
-                    2 replys | 4 likes
-                </small>
-            </li>
-        </ul>
-    </div>
     <div class="col-md-7">
-        <h4 class="text-md-blue">Upcomming Events</h4>
+        <h4 class="text-md-blue">Announcements</h4>
+        <div class="panel">
+            <div class="panel-body">
+                <h4>First HOA Meeting</h4>
+                <h6>Posted: Jan. 11, 2019</h6>
+                <br>
+                <p>
+                    Our first official HOA meeting will be Feb. 11, at 7:00pm at Tricounty Worship Center...
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="panel">
+            <div class="panel-body">
+                <h4>Ballots for HOA Officers</h4>
+                <h6>Posted: Jan. 02, 2019</h6>
+                <br>
+                <p>
+                    Submit your ballots by Feb. 11 for the 2019 officers...
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="panel">
+            <div class="panel-body">
+                <h4>Another announcement</h4>
+                <h6>Posted: Dec. 12, 2018</h6>
+                <br>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde rerum laudantium enim culpa molestiae voluptatem! Ipsum possimus ut laudantium, minima in voluptate quisquam, tenetur illum quaerat explicabo molestias excepturi suscipit?
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <h4 class="text-md-blue">Submit Announcement</h4>
+        <div class="panel">
+            <div class="panel-body">
+                <p class="text-muted">
+                    Submit an announcement to be posted on the announcement board. All will be reviewed before posting to the board.
+                </p>
+                <div class="input-group mb-2">
+                    <input class="form-control" placeholder="Name...">
+                </div>
+                <div class="input-group mb-2">
+                    <input class="form-control" placeholder="Subject...">
+                </div>
+                <div class="input-group mb-2">
+                    <textarea class="form-control" rows="5" placeholder="Message..."></textarea>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

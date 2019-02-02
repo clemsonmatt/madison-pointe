@@ -11,11 +11,9 @@ class DirectoryController < ApplicationController
     @all_people = {}
 
     @people.each do |person|
-      unless @all_people.key?(person.street_address)
-        @all_people[person.street_address] = []
-      end
+      @all_people[person.house] = [] unless @all_people.key?(person.house)
 
-      @all_people[person.street_address].push(
+      @all_people[person.house].push(
         'name' => person.to_s,
         'email' => person.email,
         'phone' => person.phone

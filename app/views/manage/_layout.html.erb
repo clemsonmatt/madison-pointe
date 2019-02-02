@@ -14,7 +14,7 @@
                     <%= link_to 'People', manage_people_path, :class => request.path.include?('/manage/people') ? 'active' : '' %>
                 </li>
                 <li>
-                    <a href="#">Dues</a>
+                    <%= link_to 'Dues', manage_dues_path, :class => request.path.include?('/manage/dues') ? 'active' : '' %>
                 </li>
                 <li>
                     <a href="#">Resources</a>
@@ -38,14 +38,14 @@
 
     <%= yield :breadcrumb %>
 
-    <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>">
-            <button type="button" class="close" data-dismiss="alert" style="font-size: 1.8em;">&times;</button>
-            <%= value %>
-        </div>
-    <% end %>
-
     <div id="content">
+        <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>">
+                <button type="button" class="close" data-dismiss="alert" style="font-size: 1.8em;">&times;</button>
+                <%= value %>
+            </div>
+        <% end %>
+
         <%= yield :manage_content %>
     </div>
 </div>

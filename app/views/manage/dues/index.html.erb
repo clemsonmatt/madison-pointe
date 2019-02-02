@@ -1,0 +1,71 @@
+<% content_for :header_title do %>
+    Dues
+<% end %>
+
+ <% content_for :breadcrumb do %>
+    <% dues_path = link_to 'Dues', manage_dues_path %>
+    <%= render "shared/manage_breadcrumb", items: [dues_path, @year + ' Dues'] %>
+<% end %>
+
+<% content_for :manage_content do %>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-body">
+                    <h3><%= @year %> Dues</h3>
+                    <br>
+                    <%= bootstrap_form_for @dues, url: manage_due_path(@dues) do |f| %>
+                        <%= f.text_field :amount, prepend: "$", value: number_with_precision(@dues.amount, precision: 2) %>
+                        <%= f.submit 'Update', class: 'btn btn-custom' %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="panel">
+                <div class="panel-body">
+                    <h3>
+                        <div class="float-right">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-custom btn-sm">Send dues reminder</a>
+                                <button class="btn btn-sm btn-outline-custom dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                                    <%= @year %>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="#">2018</a>
+                                    <a class="dropdown-item" href="#">2020</a>
+                                </div>
+                            </div>
+                        </div>
+                        Payments for <%= @year %>
+                    </h3>
+                    <br>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <th>House</th>
+                            <th>Status</th>
+                            <th width="1%"></th>
+                        </thead>
+                        <% @house_dues.each do |single_house_due| %>
+                            <tr class="<%= 'bg-success-light' if single_house_due.paid? %>">
+                                <td><%= single_house_due.house %></td>
+                                <td><%= single_house_due.paid ? "Paid (#{single_house_due.date.strftime('%m/%d/%Y')})" : 'Not paid' %></td>
+                                <% if single_house_due.paid %>
+                                    <td>
+                                        <%= link_to 'Mark not paid', manage_dues_house_not_paid_path(single_house_due.house.id), class: 'btn btn-success btn-sm' %>
+                                    </td>
+                                <% else %>
+                                    <td>
+                                        <%= link_to 'Mark paid', manage_dues_house_paid_path(single_house_due.house.id), class: 'btn btn-custom btn-sm' %>
+                                    </td>
+                                <% end %>
+                            </tr>
+                        <% end %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<%= render 'manage/layout' %>
