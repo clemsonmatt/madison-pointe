@@ -51,7 +51,9 @@
                                 <td><%= single_house_due.house %></td>
                                 <td><%= single_house_due.paid ? "Paid (#{single_house_due.date.strftime('%m/%d/%Y')})" : 'Not paid' %></td>
                                 <% if single_house_due.paid %>
-                                    <td></td>
+                                    <td>
+                                        <%= link_to 'Mark not paid', manage_dues_house_not_paid_path(single_house_due.house.id), class: 'btn btn-success btn-sm' %>
+                                    </td>
                                 <% else %>
                                     <td>
                                         <%= link_to 'Mark paid', manage_dues_house_paid_path(single_house_due.house.id), class: 'btn btn-custom btn-sm' %>

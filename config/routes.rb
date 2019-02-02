@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   # manage dues
   get 'manage/dues/:id/dues-paid', to: 'manage/dues#dues_paid', as: 'manage_dues_house_paid'
+  get 'manage/dues/:id/dues-not-paid', to: 'manage/dues#dues_not_paid', as: 'manage_dues_house_not_paid'
 
   get 'verify-account/:verification_token', to: 'security#verify_email', as: 'security_verify_email'
 
