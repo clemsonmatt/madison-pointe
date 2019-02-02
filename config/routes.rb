@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   get 'manage/people/:id/residents', to: 'manage/people#residents', as: 'manage_person_residents'
   get 'manage/people/:id/verify-account', to: 'manage/people#verify_account', as: 'manage_person_verify_account'
 
+  # manage dues
+  get 'manage/dues/:id/dues-paid', to: 'manage/dues#dues_paid', as: 'manage_dues_house_paid'
+
   get 'verify-account/:verification_token', to: 'security#verify_email', as: 'security_verify_email'
 
   get 'dashboard/index'

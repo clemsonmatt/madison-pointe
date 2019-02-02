@@ -50,7 +50,13 @@
                             <tr class="<%= 'bg-success-light' if single_house_due.paid? %>">
                                 <td><%= single_house_due.house %></td>
                                 <td><%= single_house_due.paid ? "Paid (#{single_house_due.date.strftime('%m/%d/%Y')})" : 'Not paid' %></td>
-                                <td></td>
+                                <% if single_house_due.paid %>
+                                    <td></td>
+                                <% else %>
+                                    <td>
+                                        <%= link_to 'Mark paid', manage_dues_house_paid_path(single_house_due.house.id), class: 'btn btn-custom btn-sm' %>
+                                    </td>
+                                <% end %>
                             </tr>
                         <% end %>
                     </table>
