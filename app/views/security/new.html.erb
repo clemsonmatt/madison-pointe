@@ -36,7 +36,7 @@
                                             <%= text_field_tag :phone, params[:phone], class: 'form-control', id: 'js-phone', placeholder: 'Phone' %>
                                         </div>
                                         <div class="col-md-6">
-                                            <%= select_tag :street_number, grouped_options_for_select(@street_numbers), prompt: '-- Street Number --', class: 'form-control' %>
+                                            <%= select_tag :house_id, options_from_collection_for_select(@houses, :id, :address), prompt: '-- House Number --', class: 'form-control' %>
                                         </div>
                                     </div>
 

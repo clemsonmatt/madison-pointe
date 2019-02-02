@@ -2,7 +2,7 @@ class Manage::PeopleController < ApplicationController
   before_action :logged_in?
 
   def index
-    @people = Person.all.order('street_number')
+    @people = Person.all.order('house_id')
   end
 
   def show
