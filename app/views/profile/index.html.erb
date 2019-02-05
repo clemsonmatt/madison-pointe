@@ -31,7 +31,20 @@
         <div class="panel-header">
             <div class="float-right">
                 <% unless @user.paid_yearly_dues?(@year) %>
-                    <a href="#" class="btn btn-outline-custom btn-sm">Pay</a>
+                    <form action="<%= profile_pay_dues_path %>" method="POST">
+                        <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="<%= @stripe_api_key %>"
+                            data-amount="<%= @user.amount_due_for_year_stripe(@year) %>"
+                            data-name="Madison Pointe"
+                            data-description="HOA Dues"
+                            data-locale="auto"
+                            data-billingAddress="true"
+                            data-allowRememberMe="false"
+                            data-label="Pay with card">
+                        </script>
+                        <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"/>
+                    </form>
                 <% end %>
             </div>
             <%= @year %> Dues

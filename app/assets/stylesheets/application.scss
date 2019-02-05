@@ -120,6 +120,14 @@ h1, h2, h3, h4, h5 {
     border-radius: .2rem;
 }
 
+button.stripe-button-el,
+button.stripe-button-el>span {
+  background-color: $mpColor !important;
+  background-image: none;
+}
+
+
+
 a {
     color: $mpColor;
     &:hover {

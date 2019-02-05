@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   # profile
+  post 'profile-pay-dues', to: 'profile#pay_dues', as: 'profile_pay_dues'
   get 'profile-residents', to: 'profile#residents', as: 'profile_residents'
   delete 'profile-resident-delete/:id', to: 'profile#resident_delete', as: 'profile_resident_delete'
 

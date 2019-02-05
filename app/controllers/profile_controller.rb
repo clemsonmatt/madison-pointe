@@ -3,6 +3,7 @@ class ProfileController < ApplicationController
 
   def index
     @year = Date.current.strftime('%Y')
+    @stripe_api_key = ENV['STRIPE_API_KEY']
   end
 
   def new
@@ -52,6 +53,29 @@ class ProfileController < ApplicationController
     end
 
     redirect_to profile_residents_path
+  end
+
+  def pay_dues
+    token = params[:stripeToken]
+    year = Date.current.strftime('%Y')
+
+    Stripe.api_key = ENV['STRIPE_API_SECRET_KEY']
+    charge = Stripe::Charge.create(
+      amount: @user.amount_due_for_year_stripe(year),
+      currency: 'usd',
+      description: "#{year} HOA Dues",
+      source: token
+    )
+
+    yearly_dues = Due.find_by year: year
+
+    dues_house = DuesHouse.find_by due: yearly_dues, house: @user.house
+    dues_house.stripe_details = charge
+    dues_house.paid = true
+    dues_house.date = DateTime.current
+    dues_house.save!
+
+    redirect_to profile_index_path
   end
 
   private
