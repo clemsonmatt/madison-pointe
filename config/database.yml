@@ -26,4 +26,4 @@ production:
   # database: madison-pointe
   # pool: 5
   # url: $CLEARDB_DATABASE_URL
-  url: <%= ENV['CLEARDB_DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
