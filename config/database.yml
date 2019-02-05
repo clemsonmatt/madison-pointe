@@ -21,9 +21,9 @@ development:
 #   database: db/test.sqlite3
 #
 production:
-  adapter: mysql2
-  encoding: utf8
+  # adapter: mysql2
+  # encoding: utf8
   # database: madison-pointe
-  pool: 5
+  # pool: 5
   # url: $CLEARDB_DATABASE_URL
   url: <%= ENV['CLEARDB_DATABASE_URL'] %>
