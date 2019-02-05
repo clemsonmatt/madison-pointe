@@ -25,4 +25,5 @@ production:
   encoding: utf8
   # database: madison-pointe
   pool: 5
-  url: $CLEARDB_DATABASE_URL
+  # url: $CLEARDB_DATABASE_URL
+  url: <%= ENV['CLEARDB_DATABASE_URL'] %>
