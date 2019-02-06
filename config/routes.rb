@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   # manage people
   get 'manage/people/:id/residents', to: 'manage/people#residents', as: 'manage_person_residents'
   get 'manage/people/:id/verify-account', to: 'manage/people#verify_account', as: 'manage_person_verify_account'
+  get 'manage/people/:id/toggle-permission/:permission', to: 'manage/people#toggle_permission', as: 'manage_person_toggle_permission'
 
   # manage dues
   get 'manage/dues/:id/dues-paid', to: 'manage/dues#dues_paid', as: 'manage_dues_house_paid'

@@ -1,9 +1,14 @@
-<% content_for :breadcrumb do %>
-    <% people_path = link_to 'People', manage_people_path %>
-    <%= render "shared/manage_breadcrumb", items: [people_path, @person, 'Edit Profile'] %>
+<% content_for :header_title do %>
+    People
 <% end %>
 
-<% content_for :profile_content do %>
+<% content_for :breadcrumb do %>
+    <% people_path = link_to 'People', manage_people_path %>
+    <% person_path = link_to @person, manage_person_path(@person) %>
+    <%= render "shared/manage_breadcrumb", items: [people_path, person_path, 'Edit Profile'] %>
+<% end %>
+
+<% content_for :manage_content do %>
     <div class="panel">
         <div class="panel-header">
             <div class="float-right">
@@ -45,4 +50,4 @@
     </div>
 <% end %>
 
-<%= render 'manage/people/profile_layout' %>
+<%= render 'manage/layout' %>

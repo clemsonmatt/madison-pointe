@@ -7,15 +7,17 @@
     <%= render "shared/manage_breadcrumb", items: [people_path, @person, 'Profile'] %>
 <% end %>
 
-<% content_for :profile_content do %>
+<% content_for :manage_content do %>
     <div class="row">
         <div class="col-lg-8">
             <div class="panel">
                 <div class="panel-body">
                     <h3>
-                        <div class="float-right">
-                            <%= link_to 'Edit', edit_manage_person_path, class: 'btn btn-outline-custom btn-sm' %>
-                        </div>
+                        <% if @user.permission? 'manage_people_write' %>
+                            <div class="float-right">
+                                <%= link_to 'Edit', edit_manage_person_path, class: 'btn btn-outline-custom btn-sm' %>
+                            </div>
+                        <% end %>
                         Profile
                     </h3>
                     <br>
@@ -56,6 +58,66 @@
                 </div>
             </div>
             <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <h3>Dues</h3>
+                            <table class="table table-striped">
+                                <thead>
+                                    <th>Year</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </thead>
+                                <% @person.house.dues_houses.each do |dues_house| %>
+                                    <tr>
+                                        <td><%= dues_house.due.year %></td>
+                                        <td>$<%= dues_house.due.amount %></td>
+                                        <td><%= dues_house.paid ? 'Paid' : 'Not paid' %></td>
+                                    </tr>
+                                <% end %>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <h3>Permissions</h3>
+                            <table class="table table-striped">
+                                <thead>
+                                    <th>Permission</th>
+                                    <th width="1%"></th>
+                                </thead>
+                                <tr>
+                                    <td>Manage person (Read only)</td>
+                                    <td>
+                                        <%= link_to (@person.permission?('manage_person_read') ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: 'manage_person_read'), class: 'btn btn-xs btn-custom' %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Manage person (Write)</td>
+                                    <td>
+                                        <%= link_to (@person.permission?('manage_person_write') ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: 'manage_person_write'), class: 'btn btn-xs btn-custom' %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Manage dues</td>
+                                    <td>
+                                        <%= link_to (@person.permission?('manage_dues') ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: 'manage_dues'), class: 'btn btn-xs btn-custom' %>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="panel">
+                <div class="panel-body">
+                    <h3>Activity Log</h3>
+                </div>
+            </div>
         </div>
         <div class="col-lg-4">
             <div class="panel">
@@ -114,8 +176,14 @@
                     </dl>
                 </div>
             </div>
+            <br>
+            <div class="panel">
+                <div class="panel-body">
+                    <h3>Emails</h3>
+                </div>
+            </div>
         </div>
     </div>
 <% end %>
 
-<%= render 'manage/people/profile_layout' %>
+<%= render 'manage/layout' %>
