@@ -89,24 +89,14 @@
                                     <th>Permission</th>
                                     <th width="1%"></th>
                                 </thead>
-                                <tr>
-                                    <td>Manage person (Read only)</td>
-                                    <td>
-                                        <%= link_to (@person.permission?('manage_person_read') ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: 'manage_person_read'), class: "btn btn-xs btn-#{(@person.permission?('manage_person_read') ? 'danger' : 'custom')}" %>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Manage person (Write)</td>
-                                    <td>
-                                        <%= link_to (@person.permission?('manage_person_write') ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: 'manage_person_write'), class: "btn btn-xs btn-#{(@person.permission?('manage_person_write') ? 'danger' : 'custom')}" %>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Manage dues</td>
-                                    <td>
-                                        <%= link_to (@person.permission?('manage_dues') ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: 'manage_dues'), class: "btn btn-xs btn-#{(@person.permission?('manage_dues') ? 'danger' : 'custom')}" %>
-                                    </td>
-                                </tr>
+                                <% @person.valid_permissions.each do |permission| %>
+                                    <tr>
+                                        <td><%= permission[:name] %></td>
+                                        <td>
+                                            <%= link_to (@person.permission?(permission[:key]) ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: permission[:key]), class: "btn btn-xs btn-#{(@person.permission?(permission[:key]) ? 'danger' : 'custom')}" %>
+                                        </td>
+                                    </tr>
+                                <% end %>
                             </table>
                         </div>
                     </div>

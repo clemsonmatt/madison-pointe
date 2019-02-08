@@ -22,6 +22,23 @@ class Person < ApplicationRecord
     false
   end
 
+  def valid_permissions
+    [
+      {
+        key: 'manage_person_read',
+        name: 'Manage person (Read only)'
+      },
+      {
+        key: 'manage_person_write',
+        name: 'Manage person (Write)'
+      },
+      {
+        key: 'manage_dues',
+        name: 'Manage dues'
+      },
+    ]
+  end
+
   def amount_due_for_year(year)
     Due.find_by year: year
   end
