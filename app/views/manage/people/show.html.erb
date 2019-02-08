@@ -92,19 +92,19 @@
                                 <tr>
                                     <td>Manage person (Read only)</td>
                                     <td>
-                                        <%= link_to (@person.permission?('manage_person_read') ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: 'manage_person_read'), class: 'btn btn-xs btn-custom' %>
+                                        <%= link_to (@person.permission?('manage_person_read') ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: 'manage_person_read'), class: "btn btn-xs btn-#{(@person.permission?('manage_person_read') ? 'danger' : 'custom')}" %>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Manage person (Write)</td>
                                     <td>
-                                        <%= link_to (@person.permission?('manage_person_write') ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: 'manage_person_write'), class: 'btn btn-xs btn-custom' %>
+                                        <%= link_to (@person.permission?('manage_person_write') ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: 'manage_person_write'), class: "btn btn-xs btn-#{(@person.permission?('manage_person_write') ? 'danger' : 'custom')}" %>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Manage dues</td>
                                     <td>
-                                        <%= link_to (@person.permission?('manage_dues') ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: 'manage_dues'), class: 'btn btn-xs btn-custom' %>
+                                        <%= link_to (@person.permission?('manage_dues') ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: 'manage_dues'), class: "btn btn-xs btn-#{(@person.permission?('manage_dues') ? 'danger' : 'custom')}" %>
                                     </td>
                                 </tr>
                             </table>
