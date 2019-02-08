@@ -1,9 +1,9 @@
 module Manage
   class PeopleController < ApplicationController
     before_action :logged_in?
-    # before_action lambda {
-    #   permission?('manage_people_read')
-    # }
+    before_action lambda {
+      permission?('manage_person_read')
+    }
 
     def index
       @people = Person.all.order('house_id')
@@ -61,6 +61,20 @@ module Manage
       person_permission.person = person
       person_permission.permission = permission
       person_permission.save
+
+      if permission.include?('_write')
+        new_permission = permission.sub! '_write', '_read'
+
+        write_person_permission = PersonPermission.find_by person: person, permission: new_permission
+
+        if write_person_permission.nil?
+          # add read permission if given write
+          write_person_permission = PersonPermission.new
+          write_person_permission.person = person
+          write_person_permission.permission = new_permission
+          write_person_permission.save
+        end
+      end
 
       redirect_to manage_person_path person.id
     end
