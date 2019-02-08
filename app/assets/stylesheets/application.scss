@@ -36,18 +36,27 @@ html, body {
     .navbar-brand {
         color         : rgba(255, 255, 255, 1);
         text-transform: uppercase;
-        font-weight   : 500;
+        font-weight   : 100;
+        letter-spacing: 1px;
         font-size     : 1.2em;
+    }
+    .navbar-toggler {
+        color: #f9fbf9;
     }
     .nav-item > .nav-link {
         margin-left: 25px;
         color      : rgba(255, 255, 255, 1);
     }
+    .nav-item > .active {
+        border-bottom: 2px solid #f9fbf9;
+    }
     .btn {
         background: rgba(0,0,0,0.5);
         border    : 1px solid #fff;
     }
-    font-size: 1.2em;
+    font-size     : 1.2em;
+    background    : rgba(0,0,0,.1);
+    padding-bottom: 0px;
 }
 
 .page-title {
