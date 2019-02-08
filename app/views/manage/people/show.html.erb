@@ -8,6 +8,19 @@
 <% end %>
 
 <% content_for :manage_content do %>
+    <% if ! @person.is_active %>
+        <div class="alert alert-warning">
+            <%= link_to 'Verify', manage_person_verify_account_path(@person.id), class: 'btn btn-warning btn-sm float-right' %>
+            <strong>
+                <div style="float: left; padding-top: 2px; margin-right: 4px;">
+                    <%= material_icon.error_outline.style('font-size: 20px;') %>
+                </div>
+                Warning!
+            </strong>
+            This account has not been verified.
+        </div>
+    <% end %>
+
     <div class="row">
         <div class="col-lg-8">
             <div class="panel">
