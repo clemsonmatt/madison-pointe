@@ -55,7 +55,7 @@ html, body {
         border    : 1px solid #fff;
     }
     font-size     : 1.2em;
-    background    : rgba(0,0,0,.1);
+    background    : rgba(0,0,0,.3);
     padding-bottom: 0px;
 }
 
@@ -72,13 +72,14 @@ html, body {
 }
 
 .header-body {
-    background         : url(asset_path('madison-pointe.jpg'));
+    background         : url(asset_path('IMG_4051.png'));
     background-position: center 40%;
-    background-size    : 100% auto;
+    background-repeat  : no-repeat;
+    background-size    : cover;
 }
 
 .page-image {
-    background-image: url(asset_path('madison-pointe.jpg'));
+    background: url(asset_path('IMG_4044.png'));
 
     height: 100%;
 
@@ -121,6 +122,10 @@ h1, h2, h3, h4, h5 {
     background-color: inherit;
     color           : $mpColor !important;
     border          : 1px solid $mpColor;
+}
+.btn-white {
+    color           : $mpColor;
+    background-color: #fff;
 }
 .btn-xs {
     padding      : .35rem .4rem;
