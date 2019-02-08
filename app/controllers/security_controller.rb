@@ -1,29 +1,25 @@
 class SecurityController < ApplicationController
   def new
     @houses = House.all
-    p @houses
-
     @hide_header = true
     @person = Person.new
   end
 
   def create
-    @house = House.find_by id: params[:house_id]
-
     @person = Person.new(person_params)
-    # @person.house = @house
     @person.active = true
 
     # generate a new token
     @person.verification_token = ('a'..'z').to_a.sample(8).join
 
-    if @person.save
+    if verify_recaptcha(model: @person) && @person.save
       UserMailer.with(person: @person).welcome_email.deliver_now
 
       flash[:success] = 'Check your email to verify your account'
       redirect_to login_path
     else
-      render 'new'
+      flash[:danger] = 'Missing required fields'
+      redirect_to new_security_path
     end
   end
 

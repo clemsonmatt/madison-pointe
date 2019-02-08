@@ -60,3 +60,4 @@ gem 'bootstrap_form'
 gem 'material_icons'
 gem 'stripe'
 gem 'dotenv-rails', groups: [:development, :test]
+gem "recaptcha"
