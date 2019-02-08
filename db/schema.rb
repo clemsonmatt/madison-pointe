@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190202183104) do
+ActiveRecord::Schema.define(version: 20190206023114) do
 
   create_table "dues", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "year"
@@ -57,7 +57,16 @@ ActiveRecord::Schema.define(version: 20190202183104) do
     t.index ["house_id"], name: "index_people_on_house_id"
   end
 
+  create_table "person_permissions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "person_id"
+    t.string "permission"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_person_permissions_on_person_id"
+  end
+
   add_foreign_key "dues_houses", "dues"
   add_foreign_key "dues_houses", "houses"
   add_foreign_key "people", "houses"
+  add_foreign_key "person_permissions", "people"
 end

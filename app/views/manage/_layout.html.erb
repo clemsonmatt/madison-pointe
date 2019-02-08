@@ -10,15 +10,16 @@
             </div>
 
             <ul id="side-menu" class="nav">
-                <li>
-                    <%= link_to 'People', manage_people_path, :class => request.path.include?('/manage/people') ? 'active' : '' %>
-                </li>
-                <li>
-                    <%= link_to 'Dues', manage_dues_path, :class => request.path.include?('/manage/dues') ? 'active' : '' %>
-                </li>
-                <li>
-                    <a href="#">Resources</a>
-                </li>
+                <% if @user.permission?('manage_person_read') %>
+                    <li>
+                        <%= link_to 'People', manage_people_path, :class => request.path.include?('/manage/people') ? 'active' : '' %>
+                    </li>
+                <% end %>
+                <% if @user.permission?('manage_dues') %>
+                    <li>
+                        <%= link_to 'Dues', manage_dues_path, :class => request.path.include?('/manage/dues') ? 'active' : '' %>
+                    </li>
+                <% end %>
             </ul>
         </div>
     </div>

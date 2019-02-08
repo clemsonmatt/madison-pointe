@@ -1,5 +1,6 @@
 class Person < ApplicationRecord
   belongs_to :house
+  has_many :person_permissions
 
   def to_s
     "#{first_name} #{last_name}"
@@ -11,6 +12,31 @@ class Person < ApplicationRecord
     return active && verified_at if email.nil?
 
     active && email_verified_at && verified_at
+  end
+
+  def permission?(permission)
+    person_permissions.each do |person_permission|
+      return true if person_permission.permission == permission
+    end
+
+    false
+  end
+
+  def valid_permissions
+    [
+      {
+        key: 'manage_person_read',
+        name: 'Manage person (Read only)'
+      },
+      {
+        key: 'manage_person_write',
+        name: 'Manage person (Write)'
+      },
+      {
+        key: 'manage_dues',
+        name: 'Manage dues'
+      },
+    ]
   end
 
   def amount_due_for_year(year)

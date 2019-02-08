@@ -1,5 +1,10 @@
 module Manage
   class DuesController < ApplicationController
+    before_action :logged_in?
+    before_action lambda {
+      permission?('manage_dues')
+    }
+
     def index
       @year = current_year
       @dues = Manage::DuesHelper.find_or_create_dues(@year)
