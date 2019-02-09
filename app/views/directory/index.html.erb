@@ -31,7 +31,7 @@
                             <div style="float: left; padding-top: 2px; margin-right: 10px;">
                                 <%= material_icon.email.style('padding-bottom: -5px;').style('font-size: 18px;') %>
                             </div>
-                            <% if person.email != '' %>
+                            <% if person.show_email && person.email %>
                                 <%= person.email %>
                             <% else %>
                                 Not set
@@ -41,7 +41,7 @@
                             <div style="float: left; padding-top: 2px; margin-right: 10px;">
                                 <%= material_icon.phone.style('padding-bottom: -5px;').style('font-size: 18px;') %>
                             </div>
-                            <% if person.phone != '' %>
+                            <% if person.show_phone && person.phone %>
                                 <%= person.phone %>
                             <% else %>
                                 Not set

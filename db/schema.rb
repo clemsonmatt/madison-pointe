@@ -55,10 +55,10 @@ ActiveRecord::Schema.define(version: 20190209053431) do
     t.bigint "house_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.boolean "show_email", null: false
-    t.boolean "show_phone", null: false
-    t.boolean "notify_announcement", null: false
-    t.boolean "notify_dues", null: false
+    t.boolean "show_email", default: false, null: false
+    t.boolean "show_phone", default: false, null: false
+    t.boolean "notify_announcement", default: false, null: false
+    t.boolean "notify_dues", default: false, null: false
     t.index ["email"], name: "index_people_on_email"
     t.index ["house_id"], name: "index_people_on_house_id"
   end
