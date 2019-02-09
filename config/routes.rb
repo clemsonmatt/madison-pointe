@@ -14,6 +14,13 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
+  # security
+  get 'verify-account/:verification_token', to: 'security#verify_email', as: 'security_verify_email'
+  get 'forgot-password', to: 'security#password_forgot', as: 'security_forgot_password'
+  post 'forgot-password', to: 'security#password_forgot_reset', as: 'security_forgot_password_reset'
+  get 'reset-password/:reset_password_token', to: 'security#password_reset', as: 'security_reset_password'
+  post 'reset-password/:reset_password_token', to: 'security#update_password', as: 'security_update_password'
+
   # profile
   post 'profile-pay-dues', to: 'profile#pay_dues', as: 'profile_pay_dues'
   get 'profile-residents', to: 'profile#residents', as: 'profile_residents'
@@ -30,8 +37,6 @@ Rails.application.routes.draw do
   # manage dues
   get 'manage/dues/:id/dues-paid', to: 'manage/dues#dues_paid', as: 'manage_dues_house_paid'
   get 'manage/dues/:id/dues-not-paid', to: 'manage/dues#dues_not_paid', as: 'manage_dues_house_not_paid'
-
-  get 'verify-account/:verification_token', to: 'security#verify_email', as: 'security_verify_email'
 
   get 'dashboard/index'
   root 'dashboard#index'

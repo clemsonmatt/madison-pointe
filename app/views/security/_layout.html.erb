@@ -1,0 +1,18 @@
+<div class="page-image">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-xs-6">
+                <div style="margin-top: 100px;">
+                    <% flash.each do |key, value| %>
+                        <div class="alert alert-<%= key %>">
+                            <button type="button" class="close" data-dismiss="alert" style="font-size: 1.8em;">&times;</button>
+                            <%= value %>
+                        </div>
+                    <% end %>
+
+                    <%= yield :form_container %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

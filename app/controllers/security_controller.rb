@@ -40,6 +40,74 @@ class SecurityController < ApplicationController
     redirect_to login_path
   end
 
+  def password_forgot
+    @hide_header = true
+  end
+
+  def password_forgot_reset
+    if params[:email].blank?
+      flash[:danger] = 'No email provided'
+      return redirect_to security_forgot_password_path
+    end
+
+    person = Person.find_by email: params[:email]
+
+    if person.blank?
+      flash[:danger] = "Account not found for #{params[:email]}"
+      return redirect_to security_forgot_password_path
+    end
+
+    unless verify_recaptcha(model: person)
+      flash[:danger] = 'Invalid recaptcha'
+      return redirect_to security_forgot_password_path
+    end
+
+    person.generate_password_token!
+
+    UserMailer.with(person: person).password_reset.deliver_now
+
+    flash[:info] = 'Check your email for a password reset link'
+
+    redirect_to login_path
+  end
+
+  def password_reset
+    token = params[:reset_password_token].to_s
+
+    @person = Person.find_by reset_password_token: token
+
+    if @person.nil? || @person.password_token_valid? == false
+      flash[:danger] = 'Invalid token. Cannot reset password.'
+      return redirect_to login_path
+    end
+
+    @hide_header = true
+  end
+
+  def update_password
+    token = params[:reset_password_token].to_s
+
+    @person = Person.find_by reset_password_token: token
+
+    if @person && @person.password_token_valid?
+      if params[:password] != params[:password_confirm]
+        flash[:danger] = 'Passwords must match'
+        return redirect_to security_reset_password_path @person.reset_password_token
+      end
+
+      if @person.reset_password! params[:password]
+        @person.authenticate(params[:password])
+        session[:user_id] = @person.id
+
+        flash[:success] = 'Password updated'
+        return redirect_to profile_index_path
+      end
+    end
+
+    flash[:danger] = 'Invalid token. Cannot reset password.'
+    redirect_to login_path
+  end
+
   private
 
   def person_params
