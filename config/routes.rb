@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   post 'profile-pay-dues', to: 'profile#pay_dues', as: 'profile_pay_dues'
   get 'profile-residents', to: 'profile#residents', as: 'profile_residents'
   delete 'profile-resident-delete/:id', to: 'profile#resident_delete', as: 'profile_resident_delete'
+  get 'update-settings/:setting', to: 'profile#update_settings', as: 'profile_update_settings'
 
   # directory
   get 'all-people', to: 'directory#all', as: 'directory_all'

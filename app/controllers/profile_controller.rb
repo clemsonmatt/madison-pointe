@@ -78,6 +78,15 @@ class ProfileController < ApplicationController
     redirect_to profile_index_path
   end
 
+  def update_settings
+    setting = params[:setting]
+
+    @user.send("#{setting}=", !@user.send(setting))
+    @user.save!
+
+    redirect_to profile_index_path
+  end
+
   private
 
   def person_params
