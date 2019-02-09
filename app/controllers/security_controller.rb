@@ -6,6 +6,15 @@ class SecurityController < ApplicationController
   end
 
   def create
+    if params[:terms].nil?
+      @houses = House.all
+      @hide_header = true
+      @person = Person.new
+
+      flash[:warning] = 'You must agree to the terms and conditions'
+      return render 'new'
+    end
+
     @person = Person.new(person_params)
     @person.active = true
 
