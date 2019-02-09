@@ -1,16 +1,9 @@
 <% content_for :form_container do %>
     <%= form_tag security_index_path do %>
-        <%= link_to dashboard_index_path, class: 'text-center text-white', style: 'text-decoration: none;' do %>
-            <h2 style="text-transform: uppercase; letter-spacing: 2px; font-weight: 500;">
-                <span style="position: relative; top: 5px;">Madison Pointe</span>
-            </h2>
-            <h5 style="font-weight: 400;">homeowners association</h5>
-        <% end %>
-        <br>
         <div class="panel">
             <div class="panel-body">
                 <h2 class="text-center text-mp">Create Account</h2>
-                <div style="margin-top: 30px;">
+                <div style="margin-top: 10px;">
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="col-md-6">
                             <%= text_field_tag :first_name, params[:first_name], class: 'form-control', id: 'js-first_name', placeholder: 'First Name' %>
@@ -40,6 +33,14 @@
                         <%= password_field_tag :password_confirmation, nil, class: 'form-control', placeholder: 'Confirm password' %>
                     </div>
                 </div>
+                <hr>
+                <label>
+                    <%= link_to 'Terms & Conditions', asset_path('terms-conditions.pdf'), target: "_blank" %>
+                    <%= link_to 'Privacy Policy', asset_path('privacy-policy.pdf'), class: 'float-right', target: "_blank" %>
+                    <br>
+                    <%= check_box_tag :terms, checked: false, class: 'form-control' %>
+                    I have read and agreee to the terms and conditions
+                </label>
                 <hr>
                 <div style="margin-bottom: 10px;">
                     <%= recaptcha_tags %>
