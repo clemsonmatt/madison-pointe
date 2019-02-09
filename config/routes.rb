@@ -27,9 +27,6 @@ Rails.application.routes.draw do
   delete 'profile-resident-delete/:id', to: 'profile#resident_delete', as: 'profile_resident_delete'
   get 'update-settings/:setting', to: 'profile#update_settings', as: 'profile_update_settings'
 
-  # directory
-  get 'all-people', to: 'directory#all', as: 'directory_all'
-
   # manage people
   get 'manage/people/:id/residents', to: 'manage/people#residents', as: 'manage_person_residents'
   get 'manage/people/:id/verify-account', to: 'manage/people#verify_account', as: 'manage_person_verify_account'
