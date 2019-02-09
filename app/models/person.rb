@@ -1,4 +1,6 @@
 class Person < ApplicationRecord
+  before_save :normalize_blank_values
+
   belongs_to :house
   has_many :person_permissions
 
@@ -9,6 +11,12 @@ class Person < ApplicationRecord
 
   def to_s
     "#{first_name} #{last_name}"
+  end
+
+  def normalize_blank_values
+    %i[phone email].each do |column|
+      self[column].present? || self[column] = nil
+    end
   end
 
   def is_active(is_login = false)
