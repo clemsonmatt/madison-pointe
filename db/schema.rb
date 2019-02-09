@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190208210931) do
+ActiveRecord::Schema.define(version: 20190209053431) do
 
   create_table "dues", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "year"
@@ -55,6 +55,10 @@ ActiveRecord::Schema.define(version: 20190208210931) do
     t.bigint "house_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
+    t.boolean "show_email", null: false
+    t.boolean "show_phone", null: false
+    t.boolean "notify_announcement", null: false
+    t.boolean "notify_dues", null: false
     t.index ["email"], name: "index_people_on_email"
     t.index ["house_id"], name: "index_people_on_house_id"
   end

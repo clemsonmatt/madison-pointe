@@ -61,7 +61,7 @@ class Person < ApplicationRecord
   end
 
   def dues_for_year(year)
-    return "$#{format('%0.02f', amount_due_for_year(year).amount)} owed" unless paid_yearly_dues?(year)
+    return "$#{format('%0.02f', amount_due_for_year(year).amount)} due" unless paid_yearly_dues?(year)
 
     "#{year} dues paid"
   end
