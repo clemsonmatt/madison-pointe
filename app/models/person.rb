@@ -2,6 +2,11 @@ class Person < ApplicationRecord
   belongs_to :house
   has_many :person_permissions
 
+  has_secure_password validations: false
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   def to_s
     "#{first_name} #{last_name}"
   end
@@ -35,7 +40,7 @@ class Person < ApplicationRecord
       {
         key: 'manage_dues',
         name: 'Manage dues'
-      },
+      }
     ]
   end
 
@@ -61,8 +66,25 @@ class Person < ApplicationRecord
     "#{year} dues paid"
   end
 
-  has_secure_password validations: false
+  def generate_password_token!
+    self.reset_password_token = generate_token
+    self.reset_password_sent_at = Time.now.utc
+    save!
+  end
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  def password_token_valid?
+    (reset_password_sent_at + 4.hours) > Time.now.utc
+  end
+
+  def reset_password!(password)
+    self.reset_password_token = nil
+    self.password = password
+    save!
+  end
+
+  private
+
+  def generate_token
+    SecureRandom.hex(10)
+  end
 end
