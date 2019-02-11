@@ -6,12 +6,16 @@ class SecurityController < ApplicationController
   end
 
   def create
-    if params[:terms].nil?
-      @houses = House.all
-      @hide_header = true
-      @person = Person.new
+    @houses = House.all
+    @hide_header = true
+    @person = Person.new
+    existing_person = Person.find_by email: params[:email]
 
+    if params[:terms].nil?
       flash[:warning] = 'You must agree to the terms and conditions'
+      return render 'new'
+    elsif existing_person
+      flash[:danger] = "Account for email (#{params[:email]}) is already taken"
       return render 'new'
     end
 

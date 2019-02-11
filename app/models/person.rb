@@ -8,6 +8,7 @@ class Person < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :email, uniqueness: true, allow_nil: true
 
   def to_s
     "#{first_name} #{last_name}"
