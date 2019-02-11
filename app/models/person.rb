@@ -11,7 +11,12 @@ class Person < ApplicationRecord
   validates :email, uniqueness: true, allow_nil: true
   validates :password, presence: true,
                        confirmation: true,
-                       length: { minimum: 8 }
+                       length: { minimum: 8 },
+                       on: :create
+  validates :password, confirmation: true,
+                       length: { minimum: 8 },
+                       allow_blank: true,
+                       on: :update
 
   def to_s
     "#{first_name} #{last_name}"
