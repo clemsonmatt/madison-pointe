@@ -61,32 +61,46 @@ html, body {
 
 .page-title {
     color         : #e4f2f6;
-    text-shadow   : 0px 2px 2px #0C1E30;
-    height        : 85px;
+    height        : 25px;
     width         : 100%;
-    font-size     : 3.2em;
-    font-weight   : 500;
-    line-height   : 2.8;
+    font-size     : 2em;
+    font-weight   : 200;
     letter-spacing: 1px;
     text-transform: capitalize;
-    padding-top   : 175px;
+    margin-top    : 15px;
 }
-
 .header-body {
-    background         : url(asset_path('IMG_4051.png'));
-    background-position: center 40%;
-    background-repeat  : no-repeat;
-    background-size    : cover;
+    background-color: $mpColor;
+    padding-bottom  : 30px;
 }
+@media(min-width:768px) {
+    .page-title {
+        text-shadow   : 0px 2px 2px #0C1E30;
+        height        : 85px;
+        width         : 100%;
+        font-size     : 3.2em;
+        font-weight   : 500;
+        line-height   : 2.8;
+        letter-spacing: 1px;
+        text-transform: capitalize;
+        padding-top   : 175px;
+    }
+    .header-body {
+        height             : 375px;
+        background         : url(asset_path('IMG_4051.png'));
+        background-position: center 40%;
+        background-repeat  : no-repeat;
+        background-size    : cover;
+    }
+    .page-image {
+        background: url(asset_path('IMG_4044.png'));
 
-.page-image {
-    background: url(asset_path('IMG_4044.png'));
+        height: 100%;
 
-    height: 100%;
-
-    background-position: center;
-    background-repeat  : no-repeat;
-    background-size    : cover;
+        background-position: center;
+        background-repeat  : no-repeat;
+        background-size    : cover;
+    }
 }
 
 h1, h2, h3, h4, h5 {
@@ -201,8 +215,20 @@ a {
     position: absolute;
     width   : 100%;
     color   : #8B96A4;
-    a {
-        color: #8B96A4;
+    #footer-links {
+        float: right;
+        a {
+            color: #8B96A4;
+        }
+    }
+}
+@media(max-width:767px) {
+    #footer {
+        text-align: center;
+        #footer-links {
+            float     : none;
+            text-align: center;
+        }
     }
 }
 

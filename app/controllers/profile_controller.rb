@@ -85,6 +85,8 @@ class ProfileController < ApplicationController
     @user.send("#{setting}=", !@user.send(setting))
     @user.save!
 
+    flash[:success] = 'Setting saved'
+
     redirect_to profile_index_path
   end
 
