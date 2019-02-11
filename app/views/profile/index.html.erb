@@ -31,14 +31,14 @@
         <div class="panel-body">
             <dl class="row" style="margin-bottom: 0px;">
                 <dt class="col-sm-1"><span class="text-center"><%= material_icon.mail %></span></dt>
-                <dd class="col-lg-9 col-sm-8">Show my email in directory <span class="text-md-blue">(currently not showing)</span></dd>
+                <dd class="col-lg-9 col-sm-8">Show my email in directory <span class="text-md-blue">(currently <%= 'not' unless @user.show_email %> showing)</span></dd>
                 <dd class="col-lg-2 col-sm-3">
                     <%= link_to "#{@user.show_email ? 'Revoke' : 'Allow'}", profile_update_settings_path('show_email'), class: "btn btn-#{@user.show_email ? 'danger' : 'custom'} btn-sm btn-block" %>
                 </dd>
             </dl>
             <dl class="row" style="margin-bottom: 0px;">
                 <dt class="col-sm-1"><span class="text-center"><%= material_icon.phone %></span></dt>
-                <dd class="col-lg-9 col-sm-8">Show my phone in directory <span class="text-md-blue">(currently not showing)</span></dd>
+                <dd class="col-lg-9 col-sm-8">Show my phone in directory <span class="text-md-blue">(currently <%= 'not' unless @user.show_phone %> showing)</span></dd>
                 <dd class="col-lg-2 col-sm-3">
                     <%= link_to "#{@user.show_phone ? 'Revoke' : 'Allow'}", profile_update_settings_path('show_phone'), class: "btn btn-#{@user.show_phone ? 'danger' : 'custom'} btn-sm btn-block" %>
                 </dd>
@@ -46,14 +46,14 @@
             <hr>
             <dl class="row" style="margin-bottom: 0px;">
                 <dt class="col-sm-1"><span class="text-center"><%= material_icon.notifications %></span></dt>
-                <dd class="col-lg-9 col-sm-8">Notify me when a new announcement is posted <span class="text-md-blue">(currently not notifying)</span></dd>
+                <dd class="col-lg-9 col-sm-8">Notify me when a new announcement is posted <span class="text-md-blue">(currently <%= 'not' unless @user.notify_announcement %> notifying)</span></dd>
                 <dd class="col-lg-2 col-sm-3">
                     <%= link_to "#{@user.notify_announcement ? 'Revoke' : 'Allow'}", profile_update_settings_path('notify_announcement'), class: "btn btn-#{@user.notify_announcement ? 'danger' : 'custom'} btn-sm btn-block" %>
                 </dd>
             </dl>
             <dl class="row" style="margin-bottom: 0px;">
                 <dt class="col-sm-1"><span class="text-center"><%= material_icon.notifications %></span></dt>
-                <dd class="col-lg-9 col-sm-8">Notify me when my yearly dues are needed <span class="text-md-blue">(currently not notifying)</span></dd>
+                <dd class="col-lg-9 col-sm-8">Notify me when my yearly dues are needed <span class="text-md-blue">(currently <%= 'not' unless @user.notify_dues %> notifying)</span></dd>
                 <dd class="col-lg-2 col-sm-3">
                     <%= link_to "#{@user.notify_dues ? 'Revoke' : 'Allow'}", profile_update_settings_path('notify_dues'), class: "btn btn-#{@user.notify_dues ? 'danger' : 'custom'} btn-sm btn-block" %>
                 </dd>
