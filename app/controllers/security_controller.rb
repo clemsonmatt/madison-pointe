@@ -17,6 +17,9 @@ class SecurityController < ApplicationController
     elsif existing_person
       flash[:danger] = "Account for email (#{params[:email]}) is already taken"
       return render 'new'
+    elsif params[:password].length < 8
+      flash[:danger] = 'Password should be 8 or more characters'
+      return render 'new'
     end
 
     @person = Person.new(person_params)

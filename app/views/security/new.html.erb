@@ -6,10 +6,10 @@
                 <div style="margin-top: 10px;">
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="col-md-6">
-                            <%= text_field_tag :first_name, params[:first_name], class: 'form-control', id: 'js-first_name', placeholder: 'First Name' %>
+                            <%= text_field_tag :first_name, params[:first_name], class: 'form-control', id: 'js-first_name', placeholder: 'First Name', required: true %>
                         </div>
                         <div class="col-md-6">
-                            <%= text_field_tag :last_name, params[:last_name], class: 'form-control', id: 'js-last_name', placeholder: 'Last Name' %>
+                            <%= text_field_tag :last_name, params[:last_name], class: 'form-control', id: 'js-last_name', placeholder: 'Last Name', required: true %>
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
@@ -17,20 +17,20 @@
                             <%= text_field_tag :phone, params[:phone], class: 'form-control', id: 'js-phone', placeholder: 'Phone' %>
                         </div>
                         <div class="col-md-6">
-                            <%= select_tag :house_id, options_from_collection_for_select(@houses, :id, :address), prompt: '-- House Number --', class: 'form-control' %>
+                            <%= select_tag :house_id, options_from_collection_for_select(@houses, :id, :address), prompt: '-- House Number --', class: 'form-control', required: true %>
                         </div>
                     </div>
 
                     <div class="input-group" style="margin-bottom: 10px;">
-                        <%= text_field_tag :email, params[:email], class: 'form-control', id: 'js-email', placeholder: 'Email' %>
+                        <%= text_field_tag :email, params[:email], class: 'form-control', id: 'js-email', placeholder: 'Email', required: true %>
                     </div>
 
                     <div class="input-group" style="margin-bottom: 10px;">
-                        <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Password' %>
+                        <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Password (8 characters or more)', required: true %>
                     </div>
 
                     <div class="input-group" style="margin-bottom: 10px;">
-                        <%= password_field_tag :password_confirmation, nil, class: 'form-control', placeholder: 'Confirm password' %>
+                        <%= password_field_tag :password_confirmation, nil, class: 'form-control', placeholder: 'Confirm password', required: true %>
                     </div>
                 </div>
                 <hr>
@@ -38,7 +38,7 @@
                     <%= link_to 'Terms & Conditions', asset_path('terms-conditions.pdf'), target: "_blank" %>
                     <%= link_to 'Privacy Policy', asset_path('privacy-policy.pdf'), class: 'float-right', target: "_blank" %>
                     <br>
-                    <%= check_box_tag :terms, checked: false, class: 'form-control' %>
+                    <%= check_box_tag :terms, checked: false, class: 'form-control', required: true %>
                     I have read and agreee to the terms and conditions
                 </label>
                 <hr>
