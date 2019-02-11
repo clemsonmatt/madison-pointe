@@ -30,6 +30,7 @@ class SecurityController < ApplicationController
 
     if verify_recaptcha(model: @person) && @person.save
       UserMailer.with(person: @person).welcome_email.deliver_now
+      UserMailer.with(person: @person).admin_email.deliver_now
 
       flash[:warning] = 'Check your email to verify your account'
       redirect_to login_path
