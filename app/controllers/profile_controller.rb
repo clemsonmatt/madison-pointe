@@ -64,7 +64,8 @@ class ProfileController < ApplicationController
       amount: @user.amount_due_for_year_stripe(year),
       currency: 'usd',
       description: "#{year} HOA Dues",
-      source: token
+      source: token,
+      receipt_email: @user.email
     )
 
     yearly_dues = Due.find_by year: year
@@ -83,6 +84,8 @@ class ProfileController < ApplicationController
 
     @user.send("#{setting}=", !@user.send(setting))
     @user.save!
+
+    flash[:success] = 'Setting saved'
 
     redirect_to profile_index_path
   end

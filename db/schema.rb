@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190209053431) do
+ActiveRecord::Schema.define(version: 20190211034418) do
 
   create_table "dues", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "year"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20190209053431) do
     t.boolean "show_phone", default: false, null: false
     t.boolean "notify_announcement", default: false, null: false
     t.boolean "notify_dues", default: false, null: false
-    t.index ["email"], name: "index_people_on_email"
+    t.index ["email"], name: "index_people_on_email", unique: true
     t.index ["house_id"], name: "index_people_on_house_id"
   end
 

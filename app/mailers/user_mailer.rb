@@ -12,4 +12,11 @@ class UserMailer < ApplicationMailer
 
     mail(to: @person.email, subject: '[Madison Pointe HOA] Password reset')
   end
+
+  def admin_email
+    @person = params[:person]
+    @url = url_for controller: 'manage/people', action: 'show', id: @person.id
+
+    mail(to: 'madisonpthoaweb@gmail.com', subject: 'New Madison Pointe Member')
+  end
 end

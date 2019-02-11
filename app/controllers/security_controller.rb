@@ -6,12 +6,19 @@ class SecurityController < ApplicationController
   end
 
   def create
-    if params[:terms].nil?
-      @houses = House.all
-      @hide_header = true
-      @person = Person.new
+    @houses = House.all
+    @hide_header = true
+    @person = Person.new
+    existing_person = Person.find_by email: params[:email]
 
+    if params[:terms].nil?
       flash[:warning] = 'You must agree to the terms and conditions'
+      return render 'new'
+    elsif existing_person
+      flash[:danger] = "Account for email (#{params[:email]}) is already taken"
+      return render 'new'
+    elsif params[:password].length < 8
+      flash[:danger] = 'Password should be 8 or more characters'
       return render 'new'
     end
 
@@ -23,8 +30,9 @@ class SecurityController < ApplicationController
 
     if verify_recaptcha(model: @person) && @person.save
       UserMailer.with(person: @person).welcome_email.deliver_now
+      UserMailer.with(person: @person).admin_email.deliver_now
 
-      flash[:success] = 'Check your email to verify your account'
+      flash[:warning] = 'Check your email to verify your account'
       redirect_to login_path
     else
       flash[:danger] = 'Missing required fields'
