@@ -185,12 +185,25 @@ a {
 #wrapper {
     min-height: 100%;
     width     : 100%;
+    padding   : 0 0 100px;
+    position  : relative;
 }
 
 #content {
     padding: 0 15px;
     // background-color: #F6F7F8;
     background-color: #f9fbfd;
+}
+#footer {
+    bottom  : 0;
+    height  : 50px;
+    left    : 0;
+    position: absolute;
+    width   : 100%;
+    color   : #8B96A4;
+    a {
+        color: #8B96A4;
+    }
 }
 
 @media(min-width:768px) {
