@@ -2,7 +2,20 @@ class DirectoryController < ApplicationController
   before_action :logged_in?
 
   def index
-    @officers = Person.where.not(officer_position: nil).order(officer_position: :asc)
+    @all_officers = Person.where.not(officer_position: nil).order(officer_position: :asc)
+
+    @temp_president = Person.new(
+      first_name: 'Victor',
+      last_name: 'Griffin',
+      officer_position: 'President'
+    )
+
+    @officers = []
+    @officers.push(@temp_president)
+
+    @all_officers.each do |officer|
+      @officers.push(officer)
+    end
 
     @people = Person.where(active: true).where.not(verified_at: nil)
 
