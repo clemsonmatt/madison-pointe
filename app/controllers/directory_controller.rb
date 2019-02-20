@@ -2,7 +2,7 @@ class DirectoryController < ApplicationController
   before_action :logged_in?
 
   def index
-    @officers = Person.where.not(officer_position: nil)
+    @officers = Person.where.not(officer_position: nil).order(officer_position: :asc)
 
     @people = Person.where(active: true).where.not(verified_at: nil)
 
