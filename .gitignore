@@ -11,3 +11,4 @@ config/database.yml
 
 tmp/pids/server.pid
 /.env
+.DS_Store
