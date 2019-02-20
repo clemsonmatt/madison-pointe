@@ -53,26 +53,22 @@
                     <div class="row">
                         <% members.each do |person| %>
                             <div class="col-md-6">
-                                <h5><%= person %></h5>
+                                <h6><%= person %></h6>
                                 <ul style="list-style: none;">
                                     <li class="clearfix">
-                                        <div style="float: left; padding-top: 2px; margin-right: 10px;">
-                                            <%= material_icon.email.style('padding-bottom: -5px;').style('font-size: 18px;') %>
-                                        </div>
                                         <% if person.show_email && person.email %>
+                                            <div style="float: left; padding-top: 2px; margin-right: 10px;">
+                                                <%= material_icon.email.style('padding-bottom: -5px;').style('font-size: 18px;') %>
+                                            </div>
                                             <%= person.email %>
-                                        <% else %>
-                                            Not set
                                         <% end %>
                                     </li>
                                     <li class="clearfix">
-                                        <div style="float: left; padding-top: 2px; margin-right: 10px;">
-                                            <%= material_icon.phone.style('padding-bottom: -5px;').style('font-size: 18px;') %>
-                                        </div>
                                         <% if person.show_phone && person.phone %>
+                                            <div style="float: left; padding-top: 2px; margin-right: 10px;">
+                                                <%= material_icon.phone.style('padding-bottom: -5px;').style('font-size: 18px;') %>
+                                            </div>
                                             <%= person.phone %>
-                                        <% else %>
-                                            Not set
                                         <% end %>
                                     </li>
                                 </ul>
