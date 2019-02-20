@@ -17,7 +17,7 @@ class DirectoryController < ApplicationController
       @officers.push(officer)
     end
 
-    @people = Person.where(active: true).where.not(verified_at: nil)
+    @people = Person.where(active: true).where.not(verified_at: nil).order(house_id: :asc)
 
     @all_people = {}
 
