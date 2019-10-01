@@ -5,8 +5,8 @@ class DirectoryController < ApplicationController
     @all_officers = Person.where.not(officer_position: nil).order(officer_position: :asc)
 
     @temp_president = Person.new(
-      first_name: 'Victor',
-      last_name: 'Griffin',
+      first_name: 'Wade',
+      last_name: 'Watt',
       officer_position: 'President'
     )
 
