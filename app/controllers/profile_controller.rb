@@ -2,7 +2,7 @@ class ProfileController < ApplicationController
   before_action :logged_in?
 
   def index
-    @year = Date.current.strftime('%Y')
+    @year = Due.last.year
     @stripe_api_key = ENV['STRIPE_API_KEY']
   end
 
@@ -57,7 +57,7 @@ class ProfileController < ApplicationController
 
   def pay_dues
     token = params[:stripeToken]
-    year = Date.current.strftime('%Y')
+    year = Due.last.year
 
     Stripe.api_key = ENV['STRIPE_API_SECRET_KEY']
     charge = Stripe::Charge.create(

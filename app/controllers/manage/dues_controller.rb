@@ -54,7 +54,7 @@ module Manage
     private
 
     def current_year
-      Date.current.strftime('%Y')
+      Due.last.year
     end
   end
 end

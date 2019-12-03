@@ -74,6 +74,8 @@ class Person < ApplicationRecord
   def paid_yearly_dues?(year)
     dues = DuesHouse.find_by due: amount_due_for_year(year), house: house
 
+    return false unless dues
+
     dues.paid
   end
 
