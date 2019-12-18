@@ -33,8 +33,9 @@ Rails.application.routes.draw do
   get 'manage/people/:id/toggle-permission/:permission', to: 'manage/people#toggle_permission', as: 'manage_person_toggle_permission'
 
   # manage dues
-  get 'manage/dues/:id/dues-paid', to: 'manage/dues#dues_paid', as: 'manage_dues_house_paid'
-  get 'manage/dues/:id/dues-not-paid', to: 'manage/dues#dues_not_paid', as: 'manage_dues_house_not_paid'
+  get 'manage/dues/:year/:id/dues-paid', to: 'manage/dues#dues_paid', as: 'manage_dues_house_paid'
+  get 'manage/dues/:year/:id/dues-not-paid', to: 'manage/dues#dues_not_paid', as: 'manage_dues_house_not_paid'
+  get 'manage/dues/:year/year', to: 'manage/dues#dues_by_year', as: 'manage_dues_by_year'
 
   get 'dashboard/index'
   root 'dashboard#index'
