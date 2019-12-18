@@ -11,6 +11,14 @@ module Manage
       @house_dues = Manage::DuesHelper.find_or_create_house_dues(@dues)
     end
 
+    def dues_by_year
+      @year = params[:year]
+      @dues = Manage::DuesHelper.find_or_create_dues(@year)
+      @house_dues = Manage::DuesHelper.find_or_create_house_dues(@dues)
+
+      render :index
+    end
+
     def update
       @due = Due.find params[:id]
 
@@ -25,7 +33,7 @@ module Manage
 
     def dues_paid
       house = House.find params[:id]
-      year_due = Due.find_by year: current_year
+      year_due = Due.find_by year: params[:year]
 
       @dues_house = DuesHouse.find_by due: year_due, house: house
       @dues_house.paid = true
@@ -34,12 +42,12 @@ module Manage
 
       flash[:success] = "#{house} marked as paid"
 
-      redirect_to manage_dues_path
+      redirect_to manage_dues_by_year_path(params[:year])
     end
 
     def dues_not_paid
       house = House.find params[:id]
-      year_due = Due.find_by year: current_year
+      year_due = Due.find_by year: params[:year]
 
       @dues_house = DuesHouse.find_by due: year_due, house: house
       @dues_house.paid = false
@@ -48,7 +56,7 @@ module Manage
 
       flash[:info] = "#{house} marked as not paid"
 
-      redirect_to manage_dues_path
+      redirect_to manage_dues_by_year_path(params[:year])
     end
 
     private

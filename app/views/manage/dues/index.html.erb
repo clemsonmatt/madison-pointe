@@ -32,8 +32,9 @@
                                     <%= @year %>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">2018</a>
-                                    <a class="dropdown-item" href="#">2020</a>
+                                    <% (2019..(Date.today.year+1)).each do |year| %>
+                                        <%= link_to year, manage_dues_by_year_path(year), class: 'dropdown-item' %>
+                                    <% end %>
                                 </div>
                             </div>
                         </div>
@@ -52,11 +53,11 @@
                                 <td><%= single_house_due.paid ? "Paid (#{single_house_due.date.strftime('%m/%d/%Y')})" : 'Not paid' %></td>
                                 <% if single_house_due.paid %>
                                     <td>
-                                        <%= link_to 'Mark not paid', manage_dues_house_not_paid_path(single_house_due.house.id), class: 'btn btn-success btn-sm' %>
+                                        <%= link_to 'Mark not paid', manage_dues_house_not_paid_path(year: @year, id: single_house_due.house.id), class: 'btn btn-success btn-sm' %>
                                     </td>
                                 <% else %>
                                     <td>
-                                        <%= link_to 'Mark paid', manage_dues_house_paid_path(single_house_due.house.id), class: 'btn btn-custom btn-sm' %>
+                                        <%= link_to 'Mark paid', manage_dues_house_paid_path(year: @year, id: single_house_due.house.id), class: 'btn btn-custom btn-sm' %>
                                     </td>
                                 <% end %>
                             </tr>
