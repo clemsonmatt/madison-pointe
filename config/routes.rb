@@ -6,8 +6,12 @@ Rails.application.routes.draw do
             :resources
 
   namespace :manage do
-    resources :people,
-              :dues
+    resources :people
+    resources :dues do
+      collection do
+        get 'reminder-notification', to: 'reminder_notification', as: 'reminder_notification'
+      end
+    end
   end
 
   # session

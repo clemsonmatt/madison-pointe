@@ -27,7 +27,7 @@
                     <h3>
                         <div class="float-right">
                             <div class="btn-group">
-                                <a href="#" class="btn btn-custom btn-sm">Send dues reminder</a>
+                                <%= link_to 'Send dues reminder', reminder_notification_manage_dues_path, class: 'btn btn-custom btn-sm' %>
                                 <button class="btn btn-sm btn-outline-custom dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
                                     <%= @year %>
                                 </button>
