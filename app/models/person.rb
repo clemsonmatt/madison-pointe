@@ -8,7 +8,7 @@ class Person < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :email, uniqueness: true, allow_nil: true
+  validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true,
                        confirmation: true,
                        length: { minimum: 8 },

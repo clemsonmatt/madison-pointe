@@ -23,6 +23,7 @@ class SecurityController < ApplicationController
     end
 
     @person = Person.new(person_params)
+    @person.email = @person.email.strip
     @person.active = true
 
     # generate a new token
@@ -36,7 +37,7 @@ class SecurityController < ApplicationController
       redirect_to login_path
     else
       flash[:danger] = 'Missing required fields'
-      redirect_to new_security_path
+      render :new
     end
   end
 
