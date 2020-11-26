@@ -67,7 +67,7 @@ module Manage
         addresses = []
 
         dues_house.house&.people.each do |person|
-          addresses.push(person.email) if person.notify_dues?
+          addresses.push(person.email) if person.notify_dues? && person.is_active
         end
 
         next if addresses.empty?
