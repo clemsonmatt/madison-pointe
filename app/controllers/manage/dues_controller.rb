@@ -59,6 +59,27 @@ module Manage
       redirect_to manage_dues_by_year_path(params[:year])
     end
 
+    def reminder_notification
+      due = Due.find_by(year: current_year)
+      house_dues = DuesHouse.where(due: due, paid: false)
+
+      house_dues.each do |dues_house|
+        addresses = []
+
+        dues_house.house&.people.each do |person|
+          addresses.push(person.email) if person.notify_dues?
+        end
+
+        next if addresses.empty?
+
+        DuesMailer.with(dues_house: dues_house, addresses: addresses).dues_reminder.deliver_now
+      end
+
+      flash[:info] = 'Reminder notification sent'
+
+      redirect_to manage_dues_by_year_path(current_year)
+    end
+
     private
 
     def current_year
