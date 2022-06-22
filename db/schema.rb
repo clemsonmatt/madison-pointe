@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190211034418) do
+ActiveRecord::Schema.define(version: 20190209053431) do
 
   create_table "dues", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "year"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20190211034418) do
   end
 
   create_table "dues_houses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.boolean "paid", default: false
+    t.boolean "paid", default: false, null: false
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
