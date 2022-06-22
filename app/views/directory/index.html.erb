@@ -5,40 +5,42 @@
 <div class="row">
     <div class="col-md-5">
         <h3>Officers</h3>
-        <% @officers.each do |person| %>
+        <% @officers.each do |officer| %>
+            <% person = officer[:person] %>
             <div class="panel" style="margin-bottom: 15px;">
                 <div class="panel-body" style="padding-bottom: 5px;">
                     <h5 class="text-mp">
-                        <%= person %>
-                        <% if person.officer_position %>
-                            <small>
-                                &ndash; <%= person.officer_position %>
-                            </small>
-                        <% end %>
+                        <%= officer[:position] %>
+                        <small>
+                            &ndash;
+                            <%= person.nil? ? 'Open position' : person %>
+                        </small>
                     </h5>
-                    <hr style="margin: 10px 0px;">
-                    <ul style="list-style: none;">
-                        <li class="clearfix">
-                            <div style="float: left; padding-top: 2px; margin-right: 10px;">
-                                <%= material_icon.email.style('padding-bottom: -5px;').style('font-size: 18px;') %>
-                            </div>
-                            <% if person.show_email && person.email %>
-                                <%= person.email %>
-                            <% else %>
-                                Not set
-                            <% end %>
-                        </li>
-                        <li class="clearfix">
-                            <div style="float: left; padding-top: 2px; margin-right: 10px;">
-                                <%= material_icon.phone.style('padding-bottom: -5px;').style('font-size: 18px;') %>
-                            </div>
-                            <% if person.show_phone && person.phone %>
-                                <%= person.phone %>
-                            <% else %>
-                                Not set
-                            <% end %>
-                        </li>
-                    </ul>
+                    <% unless person.nil? %>
+                        <hr style="margin: 10px 0px;">
+                        <ul style="list-style: none;">
+                            <li class="clearfix">
+                                <div style="float: left; padding-top: 2px; margin-right: 10px;">
+                                    <%= material_icon.email.style('padding-bottom: -5px;').style('font-size: 18px;') %>
+                                </div>
+                                <% if person.show_email && person.email %>
+                                    <%= person.email %>
+                                <% else %>
+                                    Not set
+                                <% end %>
+                            </li>
+                            <li class="clearfix">
+                                <div style="float: left; padding-top: 2px; margin-right: 10px;">
+                                    <%= material_icon.phone.style('padding-bottom: -5px;').style('font-size: 18px;') %>
+                                </div>
+                                <% if person.show_phone && person.phone %>
+                                    <%= person.phone %>
+                                <% else %>
+                                    Not set
+                                <% end %>
+                            </li>
+                        </ul>
+                    <% end %>
                 </div>
             </div>
         <% end %>

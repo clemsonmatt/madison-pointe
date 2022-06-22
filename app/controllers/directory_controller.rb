@@ -2,7 +2,22 @@ class DirectoryController < ApplicationController
   before_action :logged_in?
 
   def index
-    @officers = Person.where.not(officer_position: nil).order(officer_position: :asc)
+    @officers = [
+      {
+        position: 'President',
+        person: Person.where(officer_position: 'President').first,
+      },
+      {
+        position: 'Secretary',
+        person: Person.where(officer_position: 'Secretary').first,
+      },
+      {
+        position: 'Treasurer',
+        person: Person.where(officer_position: 'Treasurer').first,
+      }
+    ]
+
+    # @people_with_positions = Person.where.not(officer_position: nil).order(officer_position: :asc)
 
     @people = Person.where(active: true).where.not(verified_at: nil).order(house_id: :asc)
 
