@@ -6,7 +6,15 @@ module Manage
     }
 
     def index
-      @people = Person.all.order('house_id')
+      @people = Person.active
+      @active_status = :active
+    end
+
+    def inactive
+      @people = Person.inactive
+      @active_status = :inactive
+
+      render 'index'
     end
 
     def show

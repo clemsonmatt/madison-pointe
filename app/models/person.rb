@@ -18,6 +18,9 @@ class Person < ApplicationRecord
                        allow_blank: true,
                        on: :update
 
+  scope :active, -> { where(active: true).order('house_id') }
+  scope :inactive, -> { where(active: false).order('house_id') }
+
   def to_s
     "#{first_name} #{last_name}"
   end
