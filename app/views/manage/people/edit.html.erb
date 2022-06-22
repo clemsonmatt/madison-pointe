@@ -38,6 +38,7 @@
                     <div class="col-md-6">
                         <%= f.text_field :first_name, class: "form-control" %>
                         <%= f.text_field :last_name, class: "form-control" %>
+                        <%= f.select :officer_position, [['None', nil], ['President', 'President'], ['Secretary', 'Secretary'], ['Treasurer', 'Treasurer']], {}, { class: "form-control" } %>
                     </div>
                     <div class="col-md-6">
                         <%= f.text_field :email, class: "form-control" %>

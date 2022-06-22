@@ -99,7 +99,7 @@ module Manage
     private
 
     def person_params
-      params.require(:person).permit(:first_name, :last_name, :email, :phone)
+      params.require(:person).permit(:first_name, :last_name, :email, :phone, :officer_position)
     end
   end
 end

@@ -26,12 +26,15 @@
             <div class="panel">
                 <div class="panel-body">
                     <h3>
-                        <% if @user.permission? 'manage_people_write' %>
+                        <% if @user.permission? 'manage_person_write' %>
                             <div class="float-right">
                                 <%= link_to 'Edit', edit_manage_person_path, class: 'btn btn-outline-custom btn-sm' %>
                             </div>
                         <% end %>
                         Profile
+                        <% if @person.officer_position %>
+                            <span class="badge badge-primary" style="font-size: 16px;"><%= @person.officer_position %></span>
+                        <% end %>
                     </h3>
                     <br>
                     <table class="table">
@@ -83,19 +86,21 @@
                                     <th>Status</th>
                                     <th>Date</th>
                                 </thead>
-                                <% @person.house.dues_houses.each do |dues_house| %>
-                                    <tr>
-                                        <td><%= dues_house.due.year %></td>
-                                        <td>$<%= dues_house.due.amount %></td>
-                                        <td><%= dues_house.paid ? 'Paid' : 'Not paid' %></td>
-                                        <td>
-                                            <% if dues_house.paid? %>
-                                                <%= dues_house.updated_at.strftime('%m/%d/%Y') %>
-                                            <% else %>
-                                                &mdash;
-                                            <% end %>
-                                        </td>
-                                    </tr>
+                                <% if @person.house.present? %>
+                                    <% @person.house.dues_houses.each do |dues_house| %>
+                                        <tr>
+                                            <td><%= dues_house.due.year %></td>
+                                            <td>$<%= dues_house.due.amount %></td>
+                                            <td><%= dues_house.paid ? 'Paid' : 'Not paid' %></td>
+                                            <td>
+                                                <% if dues_house.paid? %>
+                                                    <%= dues_house.updated_at.strftime('%m/%d/%Y') %>
+                                                <% else %>
+                                                    &mdash;
+                                                <% end %>
+                                            </td>
+                                        </tr>
+                                    <% end %>
                                 <% end %>
                             </table>
                         </div>
