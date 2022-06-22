@@ -32,9 +32,11 @@ Rails.application.routes.draw do
   get 'update-settings/:setting', to: 'profile#update_settings', as: 'profile_update_settings'
 
   # manage people
+  get 'manage/people-inactive', to: 'manage/people#inactive', as: 'manage_people_inactive'
   get 'manage/people/:id/residents', to: 'manage/people#residents', as: 'manage_person_residents'
   get 'manage/people/:id/verify-account', to: 'manage/people#verify_account', as: 'manage_person_verify_account'
   get 'manage/people/:id/toggle-permission/:permission', to: 'manage/people#toggle_permission', as: 'manage_person_toggle_permission'
+  get 'manage/people/:id/toggle-active', to: 'manage/people#toggle_active', as: 'manage_person_toggle_active'
 
   # manage dues
   get 'manage/dues/:year/:id/dues-paid', to: 'manage/dues#dues_paid', as: 'manage_dues_house_paid'

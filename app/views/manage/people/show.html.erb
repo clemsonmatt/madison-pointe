@@ -72,7 +72,7 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-body">
                             <h3>Dues</h3>
@@ -81,44 +81,25 @@
                                     <th>Year</th>
                                     <th>Amount</th>
                                     <th>Status</th>
+                                    <th>Date</th>
                                 </thead>
                                 <% @person.house.dues_houses.each do |dues_house| %>
                                     <tr>
                                         <td><%= dues_house.due.year %></td>
                                         <td>$<%= dues_house.due.amount %></td>
                                         <td><%= dues_house.paid ? 'Paid' : 'Not paid' %></td>
-                                    </tr>
-                                <% end %>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="panel">
-                        <div class="panel-body">
-                            <h3>Permissions</h3>
-                            <table class="table table-striped">
-                                <thead>
-                                    <th>Permission</th>
-                                    <th width="1%"></th>
-                                </thead>
-                                <% @person.valid_permissions.each do |permission| %>
-                                    <tr>
-                                        <td><%= permission[:name] %></td>
                                         <td>
-                                            <%= link_to (@person.permission?(permission[:key]) ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: permission[:key]), class: "btn btn-xs btn-#{(@person.permission?(permission[:key]) ? 'danger' : 'custom')}" %>
+                                            <% if dues_house.paid? %>
+                                                <%= dues_house.updated_at.strftime('%m/%d/%Y') %>
+                                            <% else %>
+                                                &mdash;
+                                            <% end %>
                                         </td>
                                     </tr>
                                 <% end %>
                             </table>
                         </div>
                     </div>
-                </div>
-            </div>
-            <br>
-            <div class="panel">
-                <div class="panel-body">
-                    <h3>Activity Log</h3>
                 </div>
             </div>
         </div>
@@ -177,12 +158,28 @@
                             <% end %>
                         </dd>
                     </dl>
+                    <hr>
+                    <%= link_to "Make #{@person.active? ? 'inactive' : 'active'}", manage_person_toggle_active_path(id: @person.id), class: 'btn btn-outline-secondary' %>
                 </div>
             </div>
             <br>
             <div class="panel">
                 <div class="panel-body">
-                    <h3>Emails</h3>
+                    <h3>Permissions</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <th>Permission</th>
+                            <th width="1%"></th>
+                        </thead>
+                        <% @person.valid_permissions.each do |permission| %>
+                            <tr>
+                                <td><%= permission[:name] %></td>
+                                <td>
+                                    <%= link_to (@person.permission?(permission[:key]) ? 'Revoke' : 'Apply'), manage_person_toggle_permission_path(id: @person.id, permission: permission[:key]), class: "btn btn-xs btn-#{(@person.permission?(permission[:key]) ? 'danger' : 'custom')}" %>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </table>
                 </div>
             </div>
         </div>
