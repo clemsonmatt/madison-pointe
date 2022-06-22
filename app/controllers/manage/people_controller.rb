@@ -79,6 +79,15 @@ module Manage
       redirect_to manage_person_path person.id
     end
 
+    def toggle_active
+      @person = Person.find(params[:id])
+
+      @person.active = !@person.active?
+      @person.save
+
+      redirect_to manage_person_path @person.id
+    end
+
     private
 
     def person_params

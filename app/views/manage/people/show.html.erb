@@ -177,6 +177,8 @@
                             <% end %>
                         </dd>
                     </dl>
+                    <hr>
+                    <%= link_to "Make #{@person.active? ? 'inactive' : 'active'}", manage_person_toggle_active_path(id: @person.id), class: 'btn btn-outline-secondary' %>
                 </div>
             </div>
             <br>
