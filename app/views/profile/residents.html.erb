@@ -7,7 +7,7 @@
         <div class="panel-header">
             <div class="float-right">
                 <%= link_to new_profile_path(), class: 'btn btn-outline-custom btn-sm' do %>
-                    <%= material_icon.create.style('font-size: 16px;') %>
+                    <%= material_icon.shape(:create).style('font-size: 16px;') %>
                     Add
                 <% end %>
             </div>
@@ -30,7 +30,7 @@
                             <% if person.password_digest === nil %>
                                 <%= link_to profile_resident_delete_path(person.id), method: :delete do %>
                                     <span class="text-danger float-right">
-                                        <%= material_icon.delete_forever.style('font-size: 24px;') %>
+                                        <%= material_icon.shape(:delete_forever).style('font-size: 24px;') %>
                                     </span>
                                 <% end %>
                             <% end %>

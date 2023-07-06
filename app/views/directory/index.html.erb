@@ -21,7 +21,7 @@
                         <ul style="list-style: none;">
                             <li class="clearfix">
                                 <div style="float: left; padding-top: 2px; margin-right: 10px;">
-                                    <%= material_icon.email.style('padding-bottom: -5px;').style('font-size: 18px;') %>
+                                    <%= material_icon.shape(:email).style('padding-bottom: -5px;').style('font-size: 18px;') %>
                                 </div>
                                 <% if person.show_email && person.email %>
                                     <%= person.email %>
@@ -31,7 +31,7 @@
                             </li>
                             <li class="clearfix">
                                 <div style="float: left; padding-top: 2px; margin-right: 10px;">
-                                    <%= material_icon.phone.style('padding-bottom: -5px;').style('font-size: 18px;') %>
+                                    <%= material_icon.shape(:phone).style('padding-bottom: -5px;').style('font-size: 18px;') %>
                                 </div>
                                 <% if person.show_phone && person.phone %>
                                     <%= person.phone %>
@@ -60,7 +60,7 @@
                                     <li class="clearfix">
                                         <% if person.show_email && person.email %>
                                             <div style="float: left; padding-top: 2px; margin-right: 10px;">
-                                                <%= material_icon.email.style('padding-bottom: -5px;').style('font-size: 18px;') %>
+                                                <%= material_icon.shape(:email).style('padding-bottom: -5px;').style('font-size: 18px;') %>
                                             </div>
                                             <%= person.email %>
                                         <% end %>
@@ -68,7 +68,7 @@
                                     <li class="clearfix">
                                         <% if person.show_phone && person.phone %>
                                             <div style="float: left; padding-top: 2px; margin-right: 10px;">
-                                                <%= material_icon.phone.style('padding-bottom: -5px;').style('font-size: 18px;') %>
+                                                <%= material_icon.shape(:phone).style('padding-bottom: -5px;').style('font-size: 18px;') %>
                                             </div>
                                             <%= person.phone %>
                                         <% end %>

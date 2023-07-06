@@ -13,7 +13,7 @@
             <%= link_to 'Verify', manage_person_verify_account_path(@person.id), class: 'btn btn-warning btn-sm float-right' %>
             <strong>
                 <div style="float: left; padding-top: 2px; margin-right: 4px;">
-                    <%= material_icon.error_outline.style('font-size: 20px;') %>
+                    <%= material_icon.shape(:error_outline).style('font-size: 20px;') %>
                 </div>
                 Warning!
             </strong>
@@ -125,7 +125,7 @@
                         <dd>
                             <% if @person.active %>
                                 <span class="text-success">
-                                    <span style="padding-top: 4px;"><%= material_icon.checkmark.style('font-size: 16px;') %></span>
+                                    <span style="padding-top: 4px;"><%= material_icon.shape(:checkmark).style('font-size: 16px;') %></span>
                                     Active
                                 </span>
                             <% else %>
@@ -138,7 +138,7 @@
                         <dd>
                             <% if @person.email_verified_at %>
                                 <span class="text-success">
-                                    <span style="padding-top: 4px;"><%= material_icon.checkmark.style('font-size: 16px;') %></span>
+                                    <span style="padding-top: 4px;"><%= material_icon.shape(:checkmark).style('font-size: 16px;') %></span>
                                     <%= @person.email_verified_at.strftime('%m/%d/%y') %>
                                 </span>
                             <% elsif @person.email == nil %>
@@ -153,7 +153,7 @@
                         <dd>
                             <% if @person.verified_at %>
                                 <span class="text-success">
-                                    <span style="padding-top: 4px;"><%= material_icon.checkmark.style('font-size: 16px;') %></span>
+                                    <span style="padding-top: 4px;"><%= material_icon.shape(:checkmark).style('font-size: 16px;') %></span>
                                     <%= @person.verified_at.strftime('%m/%d/%y') %>
                                 </span>
                             <% else %>

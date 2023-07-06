@@ -14,15 +14,15 @@
             <hr>
             <div class="nav flex-column nav-pills" id="v-pills-tab">
                 <%= link_to manage_person_path(@person.id), :class => 'nav-link ' + (true ? 'active' : '') do %>
-                    <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.account_circle.style('font-size: 18px;') %></div>
+                    <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.shape(:account_circle).style('font-size: 18px;') %></div>
                     Profile
                 <% end %>
                 <a class="nav-link" id="v-pills-dues-tab" data-toggle="pill" href="#dues" role="tab">
-                    <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.attach_money.style('font-size: 18px;') %></div>
+                    <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.shape(:attach_money).style('font-size: 18px;') %></div>
                     Dues
                 </a>
                 <a class="nav-link" id="v-pills-permissions-tab" data-toggle="pill" href="#permissions" role="tab">
-                    <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.settings.style('font-size: 18px;') %></div>
+                    <div style="float: left; padding-top: 2px; margin-right: 10px;"><%= material_icon.shape(:settings).style('font-size: 18px;') %></div>
                     Permissions
                 </a>
             </div>
@@ -33,7 +33,7 @@
                     <%= link_to 'Verify', manage_person_verify_account_path(@person.id), class: 'btn btn-warning btn-sm float-right' %>
                     <strong>
                         <div style="float: left; padding-top: 2px; margin-right: 4px;">
-                            <%= material_icon.error_outline.style('font-size: 20px;') %>
+                            <%= material_icon.shape(:error_outline).style('font-size: 20px;') %>
                         </div>
                         Warning!
                     </strong>
